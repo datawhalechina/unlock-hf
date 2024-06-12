@@ -1,32 +1,55 @@
-# 项目名称
+# Unlock-HuggingFace
 
-这里写项目的各类介绍信息，例如：
+近年来，自然语言处理（NLP）领域随着 Transformer 架构的出现取得了突破性进展，HuggingFace 作为 NLP 社区的重要力量，提供了海量的预训练模型和众多强大易用的函数库，极大地降低了 NLP 应用开发的门槛。
 
-- 项目背景、动机等简介内容
-- 项目内容目录
-- ....
+本项目旨在为学习者提供深入学习 HuggingFace😊 生态系统的教程，并通过完成生动有趣的具体项目提升学习者实践水平。
 
-## Roadmap
+## 内容导航
 
-*注：说明当前项目的规划，并将每个任务通过 Issue 形式进行对外进行发布。*
+内容大纲大致为:
+
+![banner](./docs/rep_index/banner.svg)
+
+| 章节   | 内容                     | 备注                                 |
+| :----- | :----------------------- | :----------------------------------- |
+| 前言   | NLP与HuggingFace整体介绍 | 包括环境配置                         |
+| 第一章 | Datasets工具             |                                      |
+| 第二章 | Transformers工具         | Pipeline工具,Tokenizer工具,Model工具 |
+| 第三章 | PEFT工具                 |                                      |
+| 第四章 | Evaluate工具             |                                      |
+| 第五章 | Diffusers工具            |                                      |
+| 第六章 | 项目案例                 |                                      |
+| 第七章 | Gradio工具               |                                      |
+
+<details>
+    <summary>
+        大纲具体内容
+    </summary>
+
+![map](./docs/rep_index/unlock-hf-plan.svg)
+</details>
 
 ## 参与贡献
 
-- 如果你想参与到项目中来欢迎查看项目的 [Issue]() 查看没有被分配的任务。
-- 如果你发现了一些问题，欢迎在 [Issue]() 中进行反馈🐛。
-- 如果你对本项目感兴趣想要参与进来可以通过 [Discussion]() 进行交流💬。
+- 如果你想参与到项目中来欢迎查看项目的 [Issue](https://github.com/datawhalechina/unlock-hf/issues) 查看没有被分配的任务✨。
+- 如果你发现了一些问题，欢迎在 [Issue](https://github.com/datawhalechina/unlock-hf/issues) 中进行反馈🐛。
 
 如果你对 Datawhale 很感兴趣并想要发起一个新的项目，欢迎查看 [Datawhale 贡献指南](https://github.com/datawhalechina/DOPMC#%E4%B8%BA-datawhale-%E5%81%9A%E5%87%BA%E8%B4%A1%E7%8C%AE)。
 
 ## 贡献者名单
 
-| 姓名 | 职责 | 简介 |
-| :----| :---- | :---- |
-| 小明 | 项目负责人 | 小明 |
-| 小红 | 第1章贡献者 | 小明的朋友 |
-| 小强 | 第2章贡献者 | 小明的朋友 |
+| 姓名   | 职责                   | 简介               |
+| :----- | :--------------------- | :----------------- |
+| 田健翔 | 项目负责人             | 内容创作者 |
+| 于小敏 | 项目指导人             | DataWhale正式成员  |
+| 卢鑫斌 | 第1章(Datasets)贡献者  | 内容创作者         |
+| 胥佳程 | 第3章(PEFT)贡献者      | 内容创作者         |
+| 秦子涵 | 第5章(Diffusers)贡献者 | 内容创作者         |
+| 陈凯歌 | 第7章(Gradio)贡献者    | 内容创作者         |
+| 刘硕   | 第7章(Gradio)贡献者    | 内容创作者         |
 
-*注：表头可自定义，但必须在名单中标明项目负责人*
+负责人联系邮箱📫:
+<wwxy.mail@gmail.com>
 
 ## 关注我们
 
