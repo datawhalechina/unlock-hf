@@ -1,0 +1,32 @@
+site_name: Unlock-HF
+site_author: moyanxinxu
+site_description: Datawhale开源教程Unlock-HF
+repo_url: https://github.com/datawhalechina/unlock-hf
+
+nav:
+  - Datasets工具: "chapter1/chapter1.md"
+  - Transformers工具:
+    - Pipeline工具: "chapter2/chapter2_1.md"
+    - Tokenizer工具: "chapter2/chapter2_2.md"
+    - Model工具: "chapter2/chapter2_3.md"
+
+
+markdown_extensions:
+  - toc:
+      permalink: True
+
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 亮色模式
