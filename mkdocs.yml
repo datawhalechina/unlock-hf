@@ -9,12 +9,33 @@ nav:
     - Pipeline工具: "chapter2/chapter2_1.md"
     - Tokenizer工具: "chapter2/chapter2_2.md"
     - Model工具: "chapter2/chapter2_3.md"
+  - 代码案例:
+    - 面对有害言论,AI重拳出击<br>(多标签分类任务): "chapter6/multi-label-classification-of-toxic-comments/multi-label-classification-of-toxic-comments.md"
 
 
 markdown_extensions:
   - toc:
       permalink: True
 
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      use_pygments: true
+      auto_title: true
+      linenums: true
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - admonition  #警告
+  - pymdownx.details  #细节折叠
+  - pymdownx.superfences  #超级围栏
+  - pymdownx.tabbed:  #内容选项卡
+      alternate_style: true  #启用内容选项卡替代样式，必须开启
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 theme:
   name: material
@@ -30,3 +51,5 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: 亮色模式
+  features:
+    - navigation.top  #返回顶端
