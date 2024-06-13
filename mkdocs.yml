@@ -53,3 +53,6 @@ theme:
         name: 亮色模式
   features:
     - navigation.top  #返回顶端
+
+plugins:
+    - glightbox

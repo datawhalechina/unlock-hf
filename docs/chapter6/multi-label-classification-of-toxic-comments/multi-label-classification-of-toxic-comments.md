@@ -175,7 +175,7 @@ DatasetDict({
 from transformers import AutoModelForSequenceClassification
 ```
 
-```python
+```python hl_lines="6"
 model = AutoModelForSequenceClassification.from_pretrained(
     "google-bert/bert-base-uncased",
     num_labels=len(id2label),
