@@ -22,8 +22,9 @@
     
     
       
+
         <title>面对有害言论, 是时候让AI重拳出击了(多标签分类任务) - Unlock-HF</title>
-      
+
     
     
       <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
@@ -120,6 +121,7 @@
           <span class="md-ellipsis">
             
               面对有害言论, 是时候让AI重拳出击了(多标签分类任务)
+
             
           </span>
         </div>
@@ -174,6 +176,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
@@ -237,9 +240,9 @@
 
 
 
-  
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Unlock-HF" class="md-nav__button md-logo" aria-label="Unlock-HF" data-md-component="logo">
       
@@ -292,8 +295,7 @@
   
     
     
-    
-    
+
       
         
         
@@ -318,6 +320,7 @@
     </a>
   
 
+
       
     </li>
   
@@ -334,8 +337,6 @@
     
     
     
-    
-      
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
@@ -382,7 +383,9 @@
           
   
   <span class="md-ellipsis">
+
     面对有害言论, 是时候让AI重拳出击了(多标签分类任务)
+
   </span>
   
 
@@ -532,8 +535,7 @@
                 </div>
               </div>
             
-            
-          
+  
           
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
@@ -544,19 +546,25 @@
   
 
 
+
 <h1 id="ai">面对有害言论, 是时候让AI重拳出击了(多标签分类任务)<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
+
 <p>任务来源：</p>
 <p><a href="https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/overview">Toxic Comment Classification Challenge</a></p>
 <h2 id="_1">总览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在网络世界中，有效过滤和管理恶意评论是一项挑战。Toxic Comment Classification Challenge 项目致力于利用深度学习技术解决这一难题。该项目源于 Kaggle 竞赛，旨在开发能够精准识别在线对话中有毒评论的算法。<strong>项目利用深度学习技术和预训练的词向量，对评论进行多类别分类，例如识别威胁、淫秽色情、侮辱和基于身份的仇恨言论等，从而帮助减少网络环境中的不良影响。</strong></p>
 <h2 id="_2">数据<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <figure>
+
 <p><a class="glightbox" href="../imgs/train.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="trainset" src="../imgs/train.png" title="训练集" width="600" /></a>
+
   </p>
 <figcaption>训练集</figcaption>
 </figure>
 <figure>
+
 <p><a class="glightbox" href="../imgs/test.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="left," alt="testset" src="../imgs/test.png" title="测试集" width="600" /></a>
+
   </p>
 <figcaption>测试集</figcaption>
 </figure>
@@ -787,8 +795,10 @@
 <a id="__codelineno-12-3" name="__codelineno-12-3"></a>    <span class="n">num_labels</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">id2label</span><span class="p">),</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="n">id2label</span><span class="o">=</span><span class="n">id2label</span><span class="p">,</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5"></a>    <span class="n">label2id</span><span class="o">=</span><span class="n">label2id</span><span class="p">,</span>
+
 <a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="hll">    <span class="n">problem_type</span><span class="o">=</span><span class="s2">&quot;multi_label_classification&quot;</span><span class="p">,</span>
 </span><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="p">)</span>
+
 </code></pre></div></td></tr></table></div>
 <p>如果任务类型为多任务标签，那么需要加载预训练模型时指定 <code>problem_type</code>为 <code>multi_label_classification</code>。</p>
 <details class="note" open="open">
@@ -939,6 +949,7 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 <a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./answer.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>经过后续的数据集格式整理，提交评测后：</p>
+
 <p><a class="glightbox" href="../imgs/score.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="score" src="../imgs/score.png" /></a></p>
 
 
@@ -1021,6 +1032,7 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
     })
 </script>
 
+
                 
               </article>
             </div>
@@ -1039,8 +1051,7 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
       
         <footer class="md-footer">
   
-    
-      
+
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
@@ -1061,8 +1072,7 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
         
         
       </nav>
-    
-  
+
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -1084,10 +1094,12 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.path", "navigation.instant", "navigation.instant.progress", "navigation.prune", "search.suggest", "search.share", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+
     
     
       <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
@@ -1099,7 +1111,9 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
+
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(() => { lightbox.reload() });
 </script></body>
+
 </html>
