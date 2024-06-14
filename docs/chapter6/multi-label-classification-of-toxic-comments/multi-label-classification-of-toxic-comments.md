@@ -1,4 +1,9 @@
-# 面对有害言论，AI重拳出击（多标签分类任务）
+---
+comments: true
+title: 面对有害言论, 是时候让AI重拳出击了(多标签分类任务)
+---
+
+# 面对有害言论, 是时候让AI重拳出击了(多标签分类任务)
 
 任务来源：
 
@@ -175,7 +180,7 @@ DatasetDict({
 from transformers import AutoModelForSequenceClassification
 ```
 
-```python
+```python hl_lines="6"
 model = AutoModelForSequenceClassification.from_pretrained(
     "google-bert/bert-base-uncased",
     num_labels=len(id2label),
