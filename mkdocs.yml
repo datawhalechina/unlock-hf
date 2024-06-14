@@ -48,7 +48,6 @@ plugins:
     - git-revision-date-localized:
         enable_creation_date: true
 
-
 theme:
   custom_dir: overides
   features:
@@ -77,5 +76,3 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: 亮色模式
-  features:
-    - navigation.top  #返回顶端
