@@ -3,6 +3,36 @@ site_author: moyanxinxu
 site_description: Datawhale开源教程Unlock-HF
 repo_url: https://github.com/datawhalechina/unlock-hf
 
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      linenums: true
+      use_pygments: true
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tilde
+  - tables
+  - toc:
+      permalink: True
+
 nav:
   - Datasets工具: "chapter1/chapter1.md"
   - Transformers工具:
@@ -10,34 +40,29 @@ nav:
     - Tokenizer工具: "chapter2/chapter2_2.md"
     - Model工具: "chapter2/chapter2_3.md"
   - 代码案例:
-    - 面对有害言论,AI重拳出击<br>(多标签分类任务): "chapter6/multi-label-classification-of-toxic-comments/multi-label-classification-of-toxic-comments.md"
+    - 面对有害言论, 是时候让AI重拳出击了(多标签分类任务): "chapter6/multi-label-classification-of-toxic-comments/multi-label-classification-of-toxic-comments.md"
 
-
-markdown_extensions:
-  - toc:
-      permalink: True
-
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-      use_pygments: true
-      auto_title: true
-      linenums: true
-  - pymdownx.superfences
-  - attr_list
-  - md_in_html
-  - admonition  #警告
-  - pymdownx.details  #细节折叠
-  - pymdownx.superfences  #超级围栏
-  - pymdownx.tabbed:  #内容选项卡
-      alternate_style: true  #启用内容选项卡替代样式，必须开启
-extra_javascript:
-  - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+plugins:
+    - glightbox
+    - search
+    - git-revision-date-localized:
+        enable_creation_date: true
 
 theme:
+  custom_dir: overides
+  features:
+    - content.code.copy
+    - header.autohide
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.prune
+    - search.suggest
+    - search.share
+    - toc.integrate
   name: material
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -51,5 +76,3 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: 亮色模式
-  features:
-    - navigation.top  #返回顶端
