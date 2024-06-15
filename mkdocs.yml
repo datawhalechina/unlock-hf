@@ -41,6 +41,9 @@ nav:
     - Model工具: "chapter2/chapter2_3.md"
   - 代码案例:
     - 面对有害言论, 是时候让AI重拳出击了(多标签分类任务): "chapter6/multi-label-classification-of-toxic-comments/multi-label-classification-of-toxic-comments.md"
+  - 附录:
+    - 虚拟环境配置: "appendix/env_config/env.md"
+
 
 plugins:
     - glightbox
