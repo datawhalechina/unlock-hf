@@ -39,6 +39,8 @@ nav:
     - Pipeline工具: "chapter2/chapter2_1.md"
     - Tokenizer工具: "chapter2/chapter2_2.md"
     - Model工具: "chapter2/chapter2_3.md"
+  - PEFT工具:
+    - PEFT总览: 'chapter3/peft_tour/peft_tour.md'
   - 代码案例:
     - 面对有害言论, 是时候让AI重拳出击了(多标签分类任务): "chapter6/multi-label-classification-of-toxic-comments/multi-label-classification-of-toxic-comments.md"
   - 附录:
