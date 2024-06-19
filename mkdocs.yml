@@ -2,7 +2,7 @@ site_name: Unlock-HF
 site_author: moyanxinxu
 site_description: Datawhale开源教程Unlock-HF
 repo_url: https://github.com/datawhalechina/unlock-hf
-
+edit_uri: edit/main/docs/
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -54,6 +54,14 @@ plugins:
     - search
     - git-revision-date-localized:
         enable_creation_date: true
+    - minify:
+        minify_html: true
+        minify_js: true
+        minify_css: true
+        htmlmin_opts:
+          remove_comments: true
+        cache_safe: true
+
 
 theme:
   custom_dir: overides
@@ -70,6 +78,8 @@ theme:
     - search.suggest
     - search.share
     - toc.integrate
+    - content.action.edit
+    - content.action.view
   name: material
   palette:
     - media: "(prefers-color-scheme: light)"
