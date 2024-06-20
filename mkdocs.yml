@@ -31,11 +31,7 @@ markdown_extensions:
   - tables
   - toc:
       permalink: True
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid_custom
+  - pymdownx.superfences
 nav:
   - Datasets工具: "chapter1/chapter1.md"
   - Transformers工具:
@@ -65,7 +61,6 @@ plugins:
         htmlmin_opts:
           remove_comments: true
         cache_safe: true
-    - mermaid2
 
 theme:
   custom_dir: overides
