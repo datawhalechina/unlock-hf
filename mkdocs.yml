@@ -25,18 +25,22 @@ markdown_extensions:
       use_pygments: true
   - pymdownx.keys
   - pymdownx.mark
-  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tilde
   - tables
   - toc:
       permalink: True
-
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
 nav:
   - Datasets工具: "chapter1/chapter1.md"
   - Transformers工具:
-    - Pipeline工具: "chapter2/chapter2_1.md"
+    - Pipeline工具:
+      - Pipeline总览: 'chapter2/pipelines/pipelines.md'
     - Tokenizer工具: "chapter2/chapter2_2.md"
     - Model工具: "chapter2/chapter2_3.md"
   - PEFT工具:
@@ -61,7 +65,7 @@ plugins:
         htmlmin_opts:
           remove_comments: true
         cache_safe: true
-
+    - mermaid2
 
 theme:
   custom_dir: overides
@@ -80,6 +84,9 @@ theme:
     - toc.integrate
     - content.action.edit
     - content.action.view
+    - content.tabs.link
+  icon:
+    annotation: material/arrow-right-circle
   name: material
   palette:
     - media: "(prefers-color-scheme: light)"
