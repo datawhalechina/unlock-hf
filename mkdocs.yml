@@ -37,7 +37,8 @@ nav:
   - Transformers工具:
     - Pipeline工具:
       - Pipeline总览: 'chapter2/pipelines/pipelines.md'
-    - Tokenizer工具: "chapter2/chapter2_2.md"
+    - Tokenizer工具:
+      - Tokenizer总览: "chapter2/tokenizer/tokenizer_tour/tokenizer_tour.md"
     - Model工具: "chapter2/chapter2_3.md"
   - PEFT工具:
     - PEFT总览: 'chapter3/peft_tour/peft_tour.md'
