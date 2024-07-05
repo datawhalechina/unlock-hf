@@ -9,6 +9,8 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+# extra_css:
+
 markdown_extensions:
   - admonition
   - attr_list
@@ -38,7 +40,8 @@ nav:
     - Pipeline工具:
       - Pipeline总览: 'chapter2/pipelines/pipelines.md'
     - Tokenizer工具:
-      - Tokenizer总览: "chapter2/tokenizer/tokenizer_tour/tokenizer_tour.md"
+      - 分词总览: "chapter2/tokenizer/tokenizer_tour/tokenizer_tour.md"
+      - 分词器总览: "chapter2/tokenizer/tokenizer_tour/tokenizer_detail.md"
     - Model工具: "chapter2/chapter2_3.md"
   - PEFT工具:
     - PEFT总览: 'chapter3/peft_tour/peft_tour.md'
@@ -62,6 +65,7 @@ plugins:
         htmlmin_opts:
           remove_comments: true
         cache_safe: true
+    # - pdf-export
 
 theme:
   custom_dir: overides
