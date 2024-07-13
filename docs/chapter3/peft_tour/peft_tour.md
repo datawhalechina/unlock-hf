@@ -1,12 +1,11 @@
 ---
 comments: true
-title: PEFT总览
+title: PEFT（Parameter-Efficient Fine-Tuning）
 ---
 
+![peft](imgs/peft.png)
 
-# PEFT（Parameter-Efficient Fine-Tuning）
-
-## 什么是 PEFT（Parameter-Efficient Fine-Tuning）
+## 前言
 
 🤗 `PEFT`（参数高效微调）是一个用于高效地将大规模预训练模型适配到各种下游应用的库。
 
@@ -52,26 +51,16 @@ from peft import LoraConfig, TaskType
 peft_config = LoraConfig(task_type=TaskType.SEQ_2_SEQ_LM, inference_mode=False, r=8, lora_alpha=32, lora_dropout=0.1)
 ```
 
-这里简单介绍这些参数：
+### PEFT 参数详解
 
-- `Task_type`：下游任务类型，面对不同的任务类型，PEFT 方法将以不同的方式调整模型。
-    - `SEQ_CLS` 对应文本分类
-    - `SEQ_2_SEQ_LM` 对应序列到序列的语言模型
-    - `CAUSAL_LM` 对应因果关系模型
-    - `TOKEN_CLS` 对应 Token 分类
-    - `QUESTION_ANS` 对应问答问题
-    - `FEATURE_EXTRACTION` 对应特征提取
-    - $\cdots$
-    - 所有的任务类型都可以在官方文档查询 [Task_type Huggingface](https://huggingface.co/docs/peft/main/en/package_reference/peft_types#peft.TaskType)
-
-- `Inference_mode`：是一种用于优化模型推理阶段性能的机制。
-    - 当模型需要训练时，将其设置为 `False`，以正常进行梯度更新、启用训练阶段特有的操作（`Dropout` 和 `Batch Normalization` 等）。
-    - 当模型需要推理时，将其设置为 `True`，以禁用梯度更新，释放内存空间，提高推理速度，同时也会跳过训练阶段特有的操作，确保模型输出的一致性。
-
-- `r`：低秩矩阵的维度，其值越小，`LoRa` 添加的参数就越少，模型训练速度就越快，但也可能降低模型的性能。
-- `lora_alpha`：低秩矩阵的缩放因子。其值越大，`LoRa` 对模型的影响就越大。
-- `lora_dropout`：应用于 `LoRa` 层的 `dropout` 概率，其在适当的数值范围内可以防止模型过拟合，提高模型的泛化能力。
-- `target_modules`：选择要应用适配器的模块，可以通过正则表达式、精确匹配、模块名称结尾匹配或选择所有线性层来实现。如果未指定该参数，PEFT 会根据模型架构自动选择目标模块。如果无法识别模型架构，则会引发错误，需要手动指定目标模块。所有默认的微调模块都可以在 [peft.utils.constants](https://github.com/huggingface/peft/blob/main/src/peft/utils/constants.py) 查看。
+| 参数                   | 说明                                                                                                                                                                                                                                                                           |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`Task_type`**      | **下游任务类型**，影响 PEFT 方法调整模型的方式。不同的任务类型可能需要不同的微调策略，因此需要根据实际情况选择合适的 `Task_type`。例如，`SEQ_CLS` 用于文本分类，`SEQ_2_SEQ_LM` 用于序列到序列的语言模型，`CAUSAL_LM` 用于因果关系模型等。更多任务类型请参考官方文档：[Task_type Huggingface](https://huggingface.co/docs/peft/main/en/package_reference/peft_types#peft.TaskType) |
+| **`Inference_mode`** | **优化模型推理阶段性能的机制**。`False` 代表**训练模式**，启用梯度更新和训练阶段特有的操作。`True` 代表**推理模式**，禁用梯度更新，释放内存空间，提高推理速度。                                                                                                                                                                                |
+| **`r`**              | **低秩矩阵的维度**，影响 LoRa 添加的参数量和训练速度。`r` 值越小，参数越少，训练越快，但可能降低模型性能。需要根据实际情况权衡训练速度和模型性能来选择合适的 `r` 值。                                                                                                                                                                                 |
+| **`lora_alpha`**     | **低秩矩阵的缩放因子**，影响 LoRa 对模型的影响程度。`lora_alpha` 值越大，影响越大。                                                                                                                                                                                                                        |
+| **`lora_dropout`**   | 应用于 LoRa 层的 dropout 概率，防止模型过拟合。`lora_dropout` 可以设置为 0 到 1 之间的数值，适当的数值范围可以提高模型的泛化能力，防止模型在训练数据上过拟合。                                                                                                                                                                            |
+| **`target_modules`** | **选择要应用适配器的模块**。可以通过**正则表达式**、**精确匹配**、**模块名称结尾匹配**或**选择所有线性层**来实现对目标模块的选择。未指定时，PEFT 会根据模型架构**自动选择目标模块**。 无法识别模型架构时，需要**手动指定目标模块**。 所有默认的微调模块都可以在 [peft.utils.constants](https://github.com/huggingface/peft/blob/main/src/peft/utils/constants.py) 查看。                      |
 
 上面的例子是针对于 `LoRa` 的，但是现实中可能需要更多不同的 `PEFT` 方法, 不同的 `PEFT` 方法又需要指定不同的参数，在不了解需要什么参数的时候怎么操作呢？
 
@@ -116,7 +105,7 @@ model = get_peft_model(model, peft_config)
 "output: trainable params: 2359296 || all params: 1231940608 || trainable%: 0.19151053100118282"
 ```
 
-`bigscience/mt0-large` 模型拥有 $12$ 亿参数，而我们只需要微调其中 $0.19%$ 就能实现令人印象深刻的效果！总的来说面对庞大的预训练模型，`PEFT` 巧妙地冻结大部分参数，只微调少量的额外参数，就能取得与全量微调相当甚至更好的效果。这是一项多么令人心情愉悦的事情！
+`bigscience/mt0-large` 模型拥有 $12$ 亿参数，而我们只需要微调其中 $0.19\%$ 就能实现令人印象深刻的效果！总的来说面对庞大的预训练模型，`PEFT` 巧妙地冻结大部分参数，只微调少量的额外参数，就能取得与全量微调相当甚至更好的效果。这是一项多么令人心情愉悦的事情！
 
 ## 训练
 
@@ -184,9 +173,8 @@ print(tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens
 "Preheat the oven to 350 degrees and place the cookie dough in the center of the oven. In a large bowl, combine the flour, baking powder, baking soda, salt, and cinnamon. In a separate bowl, combine the egg yolks, sugar, and vanilla."
 ```
 
-### 注
-
-- 我们既可以在训练完成后立即使用训练好的 `PEFT` 模型进行推理，也可以将模型保存到磁盘，稍后再加载它进行推理。选择哪种方法取决于你的具体需求。如果只是想快速测试模型，那么第一种方法更方便。如果需要长期保存和管理模型，那么第二种方法更合适。
+!!! note
+	我们既可以在训练完成后立即使用训练好的 `PEFT` 模型进行推理，也可以将模型保存到磁盘，稍后再加载它进行推理。选择哪种方法取决于你的具体需求。如果只是想快速测试模型，那么第一种方法更方便。如果需要长期保存和管理模型，那么第二种方法更合适。
 
 ## 参考资料
 

@@ -3,7 +3,7 @@ comments: true
 title: Pipelines让NLP任务化繁为简
 ---
 
-# Pipelines让NLP任务化繁为简
+![pipeline](imgs/pipeline.jpg)
 
 ## 前言
 
@@ -92,7 +92,7 @@ HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功�
 		]
 	)
 	```
-	
+
 	```json title='out'
 	 [
 	 {'label': 'POSITIVE', 'score': 0.9598049521446228},
@@ -108,7 +108,7 @@ HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功�
 		]
 	)
 	```
-	
+
 	```json title='out'
 	 [
 	 {'label': 'POSITIVE', 'score': 0.9598049521446228},
@@ -117,14 +117,14 @@ HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功�
 	```
 
 === "掩码填充"
-	
+
 	```python title='fill-mask'
 	from transformers import pipeline
-	
+
 	unmasker = pipeline("fill-mask")
 	unmasker("This course will teach you all about <mask> models.", top_k=2)
 	```
-	
+
 	```json title='output'
 	[
 	    {
@@ -133,9 +133,9 @@ HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功�
 	        "token": 30412,
 	        "token_str": " mathematical",
 	    },
-	
+
 	    {
-	
+
 	        "sequence": "This course will teach you all about computational models.",
 	        "score": 0.04052725434303284,
 	        "token": 38163,
@@ -163,7 +163,7 @@ HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功�
 
 	```python title="summarization"
 	from transformers import pipeline
-	
+
 	summarizer = pipeline("summarization")
 	summarizer(
 	    """
@@ -177,7 +177,7 @@ HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功�
 	    technology subjects, largely supporting increasingly complex scientific
 	    developments. While the latter is important, it should not be at the expense
 	    of more traditional engineering.
-	
+
 	    Rapidly developing economies such as China and India, as well as other
 	    industrial countries in Europe and Asia, continue to encourage and advance
 	    the teaching of engineering. Both China and India, respectively, graduate
@@ -199,14 +199,14 @@ HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功�
 
 !!! info "自定义管道工具的分词器与模型"
 	管道工具在执行任务的时候会自动分配一个模型，如果需要自定义分词器或者模型，那么需要提前加载分词器或模型，传入pipeline中，将形参`model`设置为自定义的模型，将形参`tokenizer`设置为自定义的分词器。
-	
+
 	```python title='管道中自定义预训练模型与分词器'
 	from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
-	
+
 	model = AutoModelForSequenceClassification.from_pretrained(
 	    "uer/roberta-base-finetuned-dianping-chinese"
 	)
-	
+
 	tokenizer = AutoTokenizer.from_pretrained("uer/roberta-base-finetuned-dianping-chinese")
 	pipes = pipeline("text-classification", model=model, tokenizer=tokenizer)
 	```
