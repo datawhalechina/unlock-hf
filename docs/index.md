@@ -1,5 +1,7 @@
 # Unlock-HuggingFace
 
+![banner](./rep_index/images_brand_logos_hf-logo-with-white-title.png)
+
 近年来，自然语言处理（NLP）领域随着 Transformer 架构的出现取得了突破性进展，HuggingFace 作为 NLP 社区的重要力量，提供了海量的预训练模型和众多强大易用的函数库，极大地降低了 NLP 应用开发的门槛。
 
 本项目旨在为学习者提供深入学习 HuggingFace😊 生态系统的教程，并通过完成生动有趣的具体项目提升学习者实践水平。
@@ -8,7 +10,7 @@
 
 内容大纲大致为:
 
-![banner](./rep_index/banner.svg)
+![nav](./rep_index/nav.svg)
 
 | 章节   | 内容                     | 备注                                 |
 | :----- | :----------------------- | :----------------------------------- |

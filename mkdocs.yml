@@ -38,13 +38,15 @@ nav:
   - Datasets工具: "chapter1/chapter1.md"
   - Transformers工具:
     - Pipeline工具:
-      - Pipeline总览: 'chapter2/pipelines/pipelines.md'
+      - Pipeline: 'chapter2/pipelines/pipelines.md'
     - Tokenizer工具:
-      - 分词总览: "chapter2/tokenizer/tokenizer_tour/tokenizer_tour.md"
-      - 分词器总览: "chapter2/tokenizer/tokenizer_tour/tokenizer_detail.md"
-    - Model工具: "chapter2/chapter2_3.md"
+      - 分词: "chapter2/tokenizer/tokenizer_tour/tokenizer_tour.md"
+      - 分词器: "chapter2/tokenizer/tokenizer_tour/tokenizer_detail.md"
+    - Model工具:
+      - 自动模型: 'chapter2/model/auto_model/auto_model.md'
+
   - PEFT工具:
-    - PEFT总览: 'chapter3/peft_tour/peft_tour.md'
+    - PEFT: 'chapter3/peft_tour/peft_tour.md'
   - Diffusers工具:
     - DDPM数学原理: 'chapter5/ddpm/ddpm_math.md'
   - 代码案例:

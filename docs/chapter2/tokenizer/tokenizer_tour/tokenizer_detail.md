@@ -1,9 +1,9 @@
 ---
 comments: true
-title: 分词器总览
+title: 分词器
 ---
 
-# 分词器
+![tokenizers](imgs/tokenizers.png)
 
 ## 加载分词器
 

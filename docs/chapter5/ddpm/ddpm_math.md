@@ -3,7 +3,7 @@ comments: true
 title: 扩散模型数学原理
 ---
 
-# 扩散模型数学原理
+![ddpm](imgs/ddpm.png)
 
 ## 前向扩散
 
@@ -299,17 +299,27 @@ $$
 P(x_{t-1}|x_t,x_0)\sim N\left(\frac1{\sqrt{\alpha_{t}}}\left(x_{t}-\frac{1-\alpha_{t}}{\sqrt{1-\overline{\alpha}_{t}}}\epsilon_t\right),\frac{\beta_t(1-\bar{a}_{t-1})}{1-\bar{a}_t}\right)\tag{36}
 $$
 
-<aside>
-
-</aside>
-
-???+ success
+???+ success "结论"
      - 根据公式 31 可以知道，只要我们知道原始图像 $x_0$ ，我们就能通过直接加入一个噪声 $\color{red}{\epsilon}$ 变成噪声图像 $x_t$。
      - 根据公式 35 可以知道，只要我们知道了噪声 $\color{red}{\epsilon}$ ，就能知道前一时刻的图像概率分布。
      - 但是问题就在于我们不知道这个噪声 $\color{red}{\epsilon}$ ，那么就能利用神经网络强大的拟合能力，给定一张噪声图去预测噪声 $\color{red}{\epsilon_t}$ 来获取前一时刻的噪声图像，再在前一时刻的噪声图像去预测另一个噪声 $\color{red}{\epsilon}$ 来获取前前一时刻的噪声图像，如此循环一定步数。最终就能得出接近原始图像的图片。
 
 ## 参考资料
 
-1. [大白话AI | 图像生成模型DDPM | 扩散模型 | 生成模型 | 概率扩散去噪生成模型](https://www.bilibili.com/video/BV1tz4y1h7q1)
-2. [大白话AI | 神经网络 | 概率空间 | 边缘概率 | 各向同性高斯分布 |](https://www.bilibili.com/video/BV1xQ4y1w7ex?spm_id_from=333.788.0.0)
-3. [三维动画展示AIGC扩散生成全过程！| 大白话AI | DDPM模型解析之三 | 扩散生成模型](https://www.bilibili.com/video/BV1hZ421y7id)
+<div class="grid cards" markdown>
+
+- Bilibili 大白话 AI
+
+    ---
+
+    [大白话AI | 图像生成模型DDPM | 扩散模型 | 生成模型 | 概率扩散去噪生成模型](https://www.bilibili.com/video/BV1tz4y1h7q1)
+
+	---
+
+	[大白话AI | 神经网络 | 概率空间 | 边缘概率 | 各向同性高斯分布 |](https://www.bilibili.com/video/BV1xQ4y1w7ex)
+
+	---
+
+	[三维动画展示 AIGC 扩散生成全过程！| 大白话 AI | DDPM 模型解析之三 | 扩散生成模型](https://www.bilibili.com/video/BV1hZ421y7id)
+
+</div>

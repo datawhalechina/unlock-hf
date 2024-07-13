@@ -4,10 +4,6 @@ comments: true
 title: 环境配置
 
 ---
-
-
-# 环境配置
-
 ## 安装 Anaconda/Miniconda
 
 ### 下载 Miniconda
@@ -244,6 +240,18 @@ pip install numpy pandas matplotlib transformers datasets peft evaluate diffuser
 
 ## 参考
 
-[深入浅出PyTorch](https://datawhalechina.github.io/thorough-pytorch/){.md-button}
+<div class="grid cards" markdown>
 
-[Miniconda  documentation](https://docs.anaconda.com/free/miniconda/index.html#latest-miniconda-installer-links){.md-button}
+- Datawhale 开源 PyTorch 教程
+    
+    ---
+    
+    [深入浅出 `PyTorch`](https://datawhalechina.github.io/thorough-pytorch/)
+
+- Miniconda 官方文档
+
+	---
+	
+	[Miniconda documentation](https://docs.anaconda.com/free/miniconda/index.html#latest-miniconda-installer-links)
+	
+</div>
