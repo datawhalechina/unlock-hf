@@ -49,6 +49,9 @@ nav:
     - PEFT: 'chapter3/peft_tour/peft_tour.md'
   - Diffusers工具:
     - DDPM数学原理: 'chapter5/ddpm/ddpm_math.md'
+  - Gradio工具:
+      - Gradio: 'chapter7/gradio/gradio_tour.md'
+      - 自定义布局: 'chapter7/gradio/gradio_layout.md'
   - 代码案例:
     - 面对有害言论, 是时候让AI重拳出击了(多标签分类任务): "chapter6/multi-label-classification-of-toxic-comments/multi-label-classification-of-toxic-comments.md"
   - 附录:

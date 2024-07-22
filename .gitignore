@@ -2,3 +2,5 @@
 .idea
 site
 main.ipynb
+main.py
+__pycache__
