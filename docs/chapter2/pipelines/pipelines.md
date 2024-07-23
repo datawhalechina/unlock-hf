@@ -3,7 +3,7 @@ comments: true
 title: Pipelines让NLP任务化繁为简
 ---
 
-![pipeline](imgs/pipeline.jpg)
+![pipeline](imgs/pipeline.png)
 
 ## 前言
 
