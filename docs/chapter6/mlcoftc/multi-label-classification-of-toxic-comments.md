@@ -1,9 +1,9 @@
 ---
 comments: true
-title: 面对有害言论, 是时候让AI重拳出击了
+title: 面对有害言论, 是时候让AI重拳出击了(多标签分类任务)
 ---
 
-![cls_logo](imgs/cls_logo.png)
+[![header](imgs/header.png)](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/overview)
 
 ## 总览
 
