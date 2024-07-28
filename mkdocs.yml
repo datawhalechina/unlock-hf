@@ -9,7 +9,9 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-# extra_css:
+extra_css:
+  - overides/css/link-preview.css
+  - overides/css/spantable.scss
 # extra:
 #   version:
 #     provider: mike
@@ -18,6 +20,7 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - neoteroi.spantable
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.caret
@@ -41,6 +44,7 @@ nav:
   - 主页: "index.md"
   - Datasets工具: "chapter1/chapter1.md"
   - Transformers工具:
+    - 索引: 'chapter2/transformers_index.md'
     - Pipeline工具:
       - Pipeline: 'chapter2/pipelines/pipelines.md'
     - Tokenizer工具:
@@ -51,16 +55,22 @@ nav:
       - 自动模型: 'chapter2/model/auto_model/auto_model.md'
 
   - PEFT工具:
+    - 索引: 'chapter3/peft_index.md'
     - PEFT: 'chapter3/peft_tour/peft_tour.md'
   - Diffusers工具:
+    - 索引: 'chapter5/diffusers_index.md'
     - DDPM数学原理: 'chapter5/ddpm/ddpm_math.md'
   - Gradio工具:
-      - Gradio: 'chapter7/gradio/gradio_tour.md'
-      - 自定义布局: 'chapter7/gradio/gradio_layout.md'
+    - 索引: 'chapter7/gradio_index.md'
+    - Gradio: 'chapter7/gradio/gradio_tour.md'
+    - 自定义布局: 'chapter7/gradio/gradio_layout.md'
   - 代码案例:
-    - 面对有害言论, 是时候让AI重拳出击了(多标签分类任务): "chapter6/mlcoftc/multi-label-classification-of-toxic-comments.md"
-    - 抽取式中文机器阅读理解: "chapter6/cmrc/cmrc.ipynb"
+    - 索引: 'chapter6/code_index.md'
+    - 多标签分类任务: "chapter6/mlcoftc/multi-label-classification-of-toxic-comments.md"
+    - 抽取式阅读理解: "chapter6/cmrc/cmrc.md"
+    - 文本摘要: "chapter6/text-summary/text-summary.md"
   - 附录:
+    - 索引: 'appendix/appendix_index.md'
     - 虚拟环境配置: "appendix/env_config/env.md"
 
 
@@ -70,6 +80,7 @@ plugins:
     - search
     - git-revision-date-localized:
         enable_creation_date: true
+    - link-preview
     - minify:
         minify_html: true
         minify_js: true
