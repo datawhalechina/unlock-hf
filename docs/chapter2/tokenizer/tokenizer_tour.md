@@ -3,6 +3,8 @@ comments: true
 title: 分词
 ---
 
+![tokennize](imgs/tokennize.svg)
+
 ## 前言
 
 在 NLP 任务中，通常处理的数据是各种各样的文本。比如下方所示的古诗，但是，模型只认数字，其他一概不认，因此我们需要找到**一种将原始文本转换为数字的方法**。这就是分词器（**tokenizer**）的职责。
