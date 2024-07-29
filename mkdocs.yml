@@ -76,7 +76,6 @@ nav:
 
 plugins:
     - glightbox
-    - mkdocs-jupyter
     - search
     - git-revision-date-localized:
         enable_creation_date: true
