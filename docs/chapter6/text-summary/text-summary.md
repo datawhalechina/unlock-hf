@@ -14,17 +14,19 @@ title: “文本摘要”
 ### 导入函数包
 
 ```python
-import torch
 import numpy as np
-from peft import LoraConfig, TaskType, get_peft_model
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import torch
 from datasets import load_dataset
-from transformers import (
-    Seq2SeqTrainer,
-    Seq2SeqTrainingArguments,
-    DataCollatorForSeq2Seq,
-)
+from peft import LoraConfig, TaskType, get_peft_model
 from rouge_chinese import Rouge
+from transformers import (
+AutoModelForSeq2SeqLM,
+AutoTokenizer,
+DataCollatorForSeq2Seq,
+pipeline,
+Seq2SeqTrainer,
+Seq2SeqTrainingArguments,
+)
 ```
 
 ```python
@@ -36,16 +38,40 @@ file_path = "hugcyp/LCSTS"
 
 ```python
 ds = load_dataset(file_path, num_proc=4)
-ds["train"] = ds["train"].select(range(8000))
 ```
 
 - 原本的数据集中训练集部分规模较大，开发者可以根据自主调节数据量。
+
+```python title="ds"
+DatasetDict({
+    train: Dataset({
+        features: ['summary', 'text'],
+        num_rows: 2400591
+    })
+    validation: Dataset({
+        features: ['summary', 'text'],
+        num_rows: 8685
+    })
+    test: Dataset({
+        features: ['summary', 'text'],
+        num_rows: 725
+    })
+})
+```
+
+```python
+ds["train"] = ds["train"].select(range(8000))
+```
+
+- 使用 `select` 方法保留训练集前 8000 条样本。
 
 ### 数据预处理
 
 ```python
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 ```
+
+- 加载分词器。
 
 ```python
 def data_pipe(example):
@@ -64,6 +90,10 @@ def data_pipe(example):
     text_inputs["labels"] = target_inputs["input_ids"]
     return text_inputs
 ```
+
+- 对每条样本内容添加前缀字符串 `"摘要生成：\n"`。
+- 分别对原文内容和摘要内容进行编码。
+- 返回 `input_ids`, `token_type_ids`, `attention_mask`, `labels`。
 
 ```python
 tokenized_ds = ds.map(data_pipe, batched=True)
@@ -87,8 +117,12 @@ peft_config = LoraConfig(
 model = get_peft_model(model, peft_config)
 ```
 
-```python
-model.print_trainable_parameters()
+```python title="peft_config"
+LoraConfig(peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, base_model_name_or_path=None, revision=None, task_type=None, inference_mode=False, r=8, target_modules=None, lora_alpha=32, lora_dropout=0.1, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', loftq_config={}, use_dora=False, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False))
+```
+
+```python title="model.print_trainable_parameters()"
+trainable params: 884,736 || all params: 248,462,592 || trainable%: 0.3561
 ```
 
 ### 性能指标
@@ -145,4 +179,13 @@ trainer = Seq2SeqTrainer(
 
 ```python
 trainer.train()
+```
+
+### 推理
+
+```python
+pipe = pipeline("summarization", model="./mengzi_lcsts", tokenizer="./mengzi_lcsts")
+out = pipe("xxxxxxxxxx")
+
+print(out)
 ```
