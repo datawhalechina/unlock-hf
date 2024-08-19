@@ -28,10 +28,10 @@ $$h = W_0x + \Delta Wx = W_0x + BAx$$
 
 其中：
 - $h$ 是输出
-- $W_0$ 是原始预训练权重，$W_0 \in \mathbb{R}^{d \times k}$
+- $W_0$ 是原始预训练权重， $W_0 \in \mathbb{R}^{d \times k}$
 - $x$ 是输入
 - $\Delta W$ 是权重更新
-- $B$ 和 $A$ 是LoRA引入的低秩矩阵，$B \in \mathbb{R}^{d \times r}, A \in \mathbb{R}^{r \times k}$
+- $B$ 和 $A$ 是LoRA引入的低秩矩阵， $B \in \mathbb{R}^{d \times r}, A \in \mathbb{R}^{r \times k}$
 
 - 整体设计：（两个小模型）输入和输出的维度均为d，这与预训练模型层的维度相同。
 - 低秩分解：A矩阵会将输入的d维数据降维至r维（增量矩阵的本征秩），r远小于d（r << d）。矩阵计算从d x d变为d x r + r x d，减少了模型的参数量和计算量。  
@@ -54,9 +54,7 @@ $$W = W_0 + BA$$
 - $W_0$ 被冻结,不接受梯度更新
 - A 和 B 包含可训练参数
 
-对于输入 $x$, 前向传播过程如下:
-
-$h = W_0x + BAx$
+对于输入 $x$, 前向传播过程如下: $h = W_0x + BAx$
 
 ### 初始化和缩放
 
@@ -81,10 +79,10 @@ LoRA主要应用于Transformer架构中的自注意力模块，这是因为自�
 
 在LoRA方法中，我们主要关注以下投影矩阵：
 
-1. **查询(Q)投影**：$W_Q \in \mathbb{R}^{d_{model} \times d_k}$
-2. **键(K)投影**：$W_K \in \mathbb{R}^{d_{model} \times d_k}$
-3. **值(V)投影**：$W_V \in \mathbb{R}^{d_{model} \times d_v}$
-4. **输出(O)投影**：$W_O \in \mathbb{R}^{d_v \times d_{model}}$
+1. **查询(Q)投影**： $W_Q \in \mathbb{R}^{d_{model} \times d_k}$
+2. **键(K)投影**： $W_K \in \mathbb{R}^{d_{model} \times d_k}$
+3. **值(V)投影**： $W_V \in \mathbb{R}^{d_{model} \times d_v}$
+4. **输出(O)投影**： $W_O \in \mathbb{R}^{d_v \times d_{model}}$
 
 对于每个投影矩阵，LoRA引入了对应的低秩更新：
 
@@ -92,14 +90,14 @@ $$W_i = W_{i,0} + B_iA_i, \quad i \in \{Q, K, V, O\}$$
 
 其中：
 - $W_{i,0}$ 是原始预训练权重（保持冻结）
-- $B_i \in \mathbb{R}^{d_{model} \times r}$，$A_i \in \mathbb{R}^{r \times d_k}$（或 $d_v$ 对于 $W_V$ 和 $W_O$）
+- $B_i \in \mathbb{R}^{d_{model} \times r}$， $B_i \in \mathbb{R}^{d_{model} \times r}$（或 $d_v$ 对于 $W_V$ 和 $W_O$）
 - $r$ 是LoRA的秩，通常远小于 $d_{model}$ 和 $d_k$（或 $d_v$）
 
 #### 3. 实现细节
 
-- **初始化**：$A_i$ 通常初始化为高斯分布，$B_i$ 初始化为零矩阵。
-- **缩放**：在实践中，我们通常对LoRA的输出进行缩放：$W_i = W_{i,0} + \alpha \frac{B_iA_i}{r}$，其中 $\alpha$ 是一个可调节的超参数。
-- **训练**：在训练过程中，只有 $A_i$ 和 $B_i$ 参与梯度更新，$W_{i,0}$ 保持不变。
+- **初始化**: $$A_i$$ 通常初始化为高斯分布， $$B_i$$ 初始化为零矩阵。
+- **缩放**：在实践中，我们通常对LoRA的输出进行缩放： $$W_i = W_{i,0} + \alpha \frac{B_iA_i}{r}$$，其中 $$\alpha$$ 是一个可调节的超参数。
+- **训练**：在训练过程中，只有 $A_i$ 和 $B_i$ 参与梯度更新， $W_{i,0}$ 保持不变。
 
 #### 4. 优化策略
 
