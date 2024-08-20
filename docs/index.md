@@ -54,6 +54,7 @@ title: Unlock-HuggingFace
 - PEFT
     - LoRa：@[鑫民](https://github.com/fancyboi999)
     - AdaLoRa：@[鑫民](https://github.com/fancyboi999)
+    - IA3：@[鑫民](https://github.com/fancyboi999)
 
 负责人联系邮箱📫:
 <wwxy.mail@gmail.com>
