@@ -38,15 +38,16 @@ AdaLoRA的核心思想是在LoRA的基础上引入了三个关键改进:
     - 在数据科学和机器学习中，SVD用于降维、数据压缩、噪声过滤等。
     - 在自然语言处理中，SVD用于提取文本数据的潜在语义结构。
 #### 公式部分讲解  
+
   $$W = W^{(0)} + \Delta = W^{(0)} + P\Lambda Q$$  
+  
 其中：
 - **$W^{(0)}$** 是原始预训练权重矩阵(与LoRA中的 $W_0$ 相同)  
 - $\Lambda \in \mathbb{R}^{r\times r}$ 是对角矩阵，包含奇异值  
 - $P \in \mathbb{R}^{d_1\times r}$ 是左奇异向量矩阵  
 - $Q \in \mathbb{R}^{r\times d_2}$ 是右奇异向量矩阵  
 
-关键改进：正交性约束
-为了确保 $P$ 和 $Q$ 的正交性，AdaLoRA引入了一个正则项： $$R(P,Q) = |P^T P - I|^2_F + |QQ^T - I|^2_F.$$  
+关键改进：**正交性约束。** 为了确保 $P$ 和 $Q$ 的正交性，AdaLoRA引入了一个正则项： $$R(P,Q) = |P^T P - I|^2_F + |QQ^T - I|^2_F.$$  
 
 这个正则项确保 $P$ 和 $Q$ 保持正交，这对于维持SVD的性质很重要。
 
@@ -66,7 +67,9 @@ AdaLoRA还引入了一个特殊的"品控"机制:  $$R(P,Q) = |P^T P - I|^2_F + 
 
 ![重要性建模](imgs/importance_math.png)
 
-AdaLoRA 引入了一个新的重要性度量标准，用于量化每个三元组 $\mathcal{G}{k,i} = {P{k,i}, \lambda_{k,i}, Q_{k,i}}$  对模型性能的贡献：  $$S_{k,i} = s(\lambda_{k,i}) + \frac{1}{d_1}\sum_{j=1}^{d_1}s(P_{k,j,i}) + \frac{1}{d_2}\sum_{j=1}^{d_2}s(Q_{k,i,j})$$  
+AdaLoRA 引入了一个新的重要性度量标准，用于量化每个三元组 $\mathcal{G}{k,i} = {P{k,i}, \lambda_{k,i}, Q_{k,i}}$  对模型性能的贡献：  
+
+ $$S_{k,i} = s(\lambda_{k,i}) + \frac{1}{d_1}\sum_{j=1}^{d_1}s(P_{k,j,i}) + \frac{1}{d_2}\sum_{j=1}^{d_2}s(Q_{k,i,j})$$  
 
 其中：
 - $S_{k,i}$ 表示重要性得分
@@ -92,7 +95,8 @@ $$\overline{U}^{(t)}(w_{ij}) = \beta_2U^{(t-1)}(w_{ij}) + (1-\beta_2)|I^{(t)}(w_
 
 **调料重要性的动态评估**  
 
-AdaLoRA使用一个特殊的方法来评估每种调料的重要性: $s^{(t)}(w_{ij}) = \overline{I}^{(t)}(w_{ij}) \cdot U^{(t)}(w_{ij})$
+AdaLoRA使用一个特殊的方法来评估每种调料的重要性: $s^{(t)}(w_{ij}) = \overline{I}^{(t)}(w_{ij}) \cdot U^{(t)}(w_{ij})$  
+
 这里: $\overline{I}^{(t)}(w_{ij})$ 可以理解为调料的"受欢迎度"  $U^{(t)}(w_{ij})$ 则代表这种调料使用的"创新性"  
 
 就像一个厨师会根据顾客反馈和新的烹饪趋势来调整菜单,AdaLoRA也会不断更新这些评估:  
