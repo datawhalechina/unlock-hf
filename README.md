@@ -50,6 +50,10 @@
 | 陈凯歌 | 第7章(Gradio)贡献者    | 内容创作者         |
 | 刘硕   | 第7章(Gradio)贡献者    | 内容创作者         |
 
+- PEFT
+    - LoRa：@[鑫民](https://github.com/fancyboi999)
+    - AdaLoRa：@[鑫民](https://github.com/fancyboi999)
+
 负责人联系邮箱📫:
 <wwxy.mail@gmail.com>
 
