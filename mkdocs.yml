@@ -62,6 +62,9 @@ nav:
     - LoRA: 'chapter3/lora_tour/lora_tour.md'
     - AdaLoRA: 'chapter3/adalora_tour/adalora_tour.md'
     - IA3: 'chapter3/ia3_tour/ia3_tour.md'
+    - Prefix-Tuning: 'chapter3/prefix_tuning_tour/prefix_tuning_tour.md'
+    - Prompt-Tuning: 'chapter3/prompt_tuning_tour/prompt_tuning_tour.md'
+    - P-Tuning: 'chapter3/p_tuning_tour/p_tuning_tour.md'
   - Diffusers工具:
     - 索引: 'chapter5/diffusers_index.md'
     - DDPM数学原理: 'chapter5/ddpm/ddpm_math.md'
