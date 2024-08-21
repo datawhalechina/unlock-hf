@@ -69,7 +69,6 @@ LoRA 为微调大型语言模型提供了几项显著优势：
 
 ## 参考资料
 
-1. Edward J. Hu, et al. "LoRA: Low-Rank Adaptation of Large Language Models." arXiv preprint arXiv:2106.09685 (2021).
-2. Neil Houlsby, et al. "Parameter-Efficient Transfer Learning for NLP." ICML 2019.
-3. Xiang Lisa Li and Percy Liang. "Prefix-Tuning: Optimizing Continuous Prompts for Generation." ACL 2021.
-4. Elad Ben-Zaken, et al. "BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models." ACL 2022.
+1. [Edward J. Hu, et al. "LoRA: Low-Rank Adaptation of Large Language Models." arXiv preprint arXiv:2106.09685 (2021).](https://arxiv.org/pdf/2106.09685v2)
+2. [Neil Houlsby, et al. "Parameter-Efficient Transfer Learning for NLP." ICML 2019.](https://arxiv.org/pdf/1902.00751)
+3. [Elad Ben-Zaken, et al. "BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models." ACL 2022.](https://arxiv.org/pdf/2106.10199)

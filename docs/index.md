@@ -55,6 +55,9 @@ title: Unlock-HuggingFace
     - LoRa：@[鑫民](https://github.com/fancyboi999)
     - AdaLoRa：@[鑫民](https://github.com/fancyboi999)
     - IA3：@[鑫民](https://github.com/fancyboi999)
+    - Prefix-Tuning：@[鑫民](https://github.com/fancyboi999)
+    - prompt-Tuning：@[鑫民](https://github.com/fancyboi999)
+    - P-Tuning：@[鑫民](https://github.com/fancyboi999)
 
 负责人联系邮箱📫:
 <wwxy.mail@gmail.com>
