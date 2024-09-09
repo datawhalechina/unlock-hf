@@ -68,19 +68,21 @@ nav:
   - Diffusers工具:
     - 索引: 'chapter5/diffusers_index.md'
     - DDPM数学原理: 'chapter5/ddpm/ddpm_math.md'
-  - Gradio工具:
-    - 索引: 'chapter7/gradio_index.md'
-    - Gradio: 'chapter7/gradio/gradio_tour.md'
-    - 自定义布局: 'chapter7/gradio/gradio_layout.md'
   - 代码案例:
     - 索引: 'chapter6/code_index.md'
     - 多标签分类任务: "chapter6/mlcoftc/multi-label-classification-of-toxic-comments.md"
     - 抽取式阅读理解: "chapter6/cmrc/cmrc.md"
     - 文本摘要: "chapter6/text-summary/text-summary.md"
+  - Gradio工具:
+    - 索引: 'chapter7/gradio_index.md'
+    - Gradio: 'chapter7/gradio/gradio_tour.md'
+    - 自定义布局: 'chapter7/gradio/gradio_layout.md'
+  - HuggingFace 代码仓库:
+    - 仓库结构: 'chapter8/repositories/repositories.md'
+    - 图码结合看BERT: 'chapter8/divide_into_bert/divide_into_bert.md'
   - 附录:
     - 索引: 'appendix/appendix_index.md'
     - 虚拟环境配置: "appendix/env_config/env.md"
-    - HuggingFace 代码仓库: 'appendix/hf_repositories/repositories.md'
 
 
 plugins:
@@ -101,7 +103,11 @@ plugins:
 theme:
   custom_dir: overides
   features:
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
     - content.code.copy
+    - content.tabs.link
     - header.autohide
     - navigation.expand
     - navigation.tabs
@@ -116,9 +122,6 @@ theme:
     - search.suggest
     - search.share
     - toc.integrate
-    - content.action.edit
-    - content.action.view
-    - content.tabs.link
   icon:
     annotation: material/arrow-right-circle
   name: material
