@@ -78,8 +78,8 @@ nav:
     - Gradio: 'chapter7/gradio/gradio_tour.md'
     - 自定义布局: 'chapter7/gradio/gradio_layout.md'
   - HuggingFace 代码仓库:
+    - 索引: 'chapter8/repositories_index.md'
     - 仓库结构: 'chapter8/repositories/repositories.md'
-    - 图码结合看BERT: 'chapter8/divide_into_bert/divide_into_bert.md'
   - 附录:
     - 索引: 'appendix/appendix_index.md'
     - 虚拟环境配置: "appendix/env_config/env.md"
