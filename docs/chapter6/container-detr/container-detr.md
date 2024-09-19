@@ -98,6 +98,21 @@ aug = albumentations.Compose(
     bbox_params=albumentations.BboxParams(format="coco", label_fields=["category"]),
 )
 ```
+
+!!! Note
+    `albumentations`函数库提供了各种各样的图像增强技术。开发者可以在这片代码中自定义图像增强方法。
+
+参数`transforms`指定图像的变化方式，参数`bbox_params`指定标签的变化方式。
+
+| 代码                                                   | 功能                                                             |
+| ------------------------------------------------------ | ---------------------------------------------------------------- |
+| `Resize(480, 480)`                                     | 将图像尺寸调整为 `480x480`                                       |
+| `HorizontalFlip(p=1)`                                  | 以概率`p`水平翻转图像                                            |
+| `albumentations.RandomBrightnessContrast(p=1.0)`       | 以概率`p`随机调整图像的亮度和对比度                              |
+| `BboxParams(format="coco", label_fields=["category"])` | 指明边界框格式采用`COCO`数据集格式，并且标签类别字段为`category` |
+
+
+
 ### 定义数据格式转化函数
 
 ```python
@@ -131,6 +146,8 @@ def datapipe(data):
         targets.append({"image_id": image_id, "annotations": annotations})
     return preprocessor(images=images, annotations=targets, return_tensors="pt")
 ```
+
+上述代码对原始数据集格式进行转化。转化后的数据集格式见`train_data[0]`。
 
 ```python
 train_data = data["train"].with_transform(datapipe)

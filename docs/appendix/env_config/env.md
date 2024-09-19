@@ -1,9 +1,10 @@
 ---
-
 comments: true
 title: 环境配置
-
 ---
+
+![miniconda3](./imgs/miniconda.png)
+
 ## 安装 Anaconda/Miniconda
 
 ### 下载 Miniconda
@@ -18,9 +19,9 @@ title: 环境配置
 | :---: | --- |
 | Windows | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe> |
 | macOS（Intel） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh> |
-| macOS（M1） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh> |
+| macOS（M/ARM） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh> |
 | Linux（x64） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh> |
-| Linux（arm64） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh> |
+| Linux（ARM） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh> |
 
 ### 安装 Miniconda
 
@@ -243,15 +244,15 @@ pip install numpy pandas matplotlib transformers datasets peft evaluate diffuser
 <div class="grid cards" markdown>
 
 - Datawhale 开源 PyTorch 教程
-    
+
     ---
-    
+
     [深入浅出 `PyTorch`](https://datawhalechina.github.io/thorough-pytorch/)
 
 - Miniconda 官方文档
 
 	---
-	
+
 	[Miniconda documentation](https://docs.anaconda.com/free/miniconda/index.html#latest-miniconda-installer-links)
-	
+
 </div>
