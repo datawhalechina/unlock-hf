@@ -84,6 +84,7 @@ nav:
   - 附录:
     - 索引: 'appendix/appendix_index.md'
     - 虚拟环境配置: "appendix/env_config/env.md"
+    - 可视化工具TensorBoard: "appendix/tensorboard/TensorBoard.md"
 
 
 plugins:
