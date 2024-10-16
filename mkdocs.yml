@@ -74,6 +74,7 @@ nav:
     - 抽取式阅读理解: "chapter6/cmrc/cmrc.md"
     - 文本摘要: "chapter6/text-summary/text-summary.md"
     - 目标检测: "chapter6/container-detr/container-detr.md"
+    - 文本翻译: "chapter6/translation/translation.md"
   - Gradio工具:
     - 索引: 'chapter7/gradio_index.md'
     - Gradio: 'chapter7/gradio/gradio_tour.md'
