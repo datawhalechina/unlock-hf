@@ -146,6 +146,7 @@ custom_channels:
   menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+auto_activate_base: false
 ```
 
 ### Linux 系统换源
@@ -200,6 +201,7 @@ custom_channels:
   menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+auto_activate_base: false
 ```
 
 最后使用`conda clean -i` 清除索引缓存。
