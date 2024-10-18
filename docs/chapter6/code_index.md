@@ -10,3 +10,4 @@ title: 索引
 - 文本摘要:[LCSTS短文本新闻摘要](./text-summary/text-summary.md)
 - 集装箱编号位置检测:[DETR目标检测](./container-detr/container-detr.md)
 - 文本翻译:[中英文本翻译](./translation/translation.md)
+- 简单去噪:[ddpm-unet](./ddpm-unet-mnist/ddpm-unet-mnist.md)
