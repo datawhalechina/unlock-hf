@@ -236,6 +236,6 @@ trainer.train()
 
     ---
 
-    [Translation](https://huggingface.co/learn/nlp-course/zh-CN/chapter7/4)
+    [文本翻译](https://huggingface.co/learn/nlp-course/zh-CN/chapter7/4)
 
 </div>

@@ -55,6 +55,8 @@ nav:
       - 截断与填充: "chapter2/tokenizer/truncation_and_padding.md"
     - Model工具:
       - 自动模型: 'chapter2/model/auto_model/auto_model.md'
+    - Trainer工具:
+      - Callbacks回调函数: 'chapter2/trainer/callbacks.md'
 
   - PEFT工具:
     - 索引: 'chapter3/peft_index.md'
