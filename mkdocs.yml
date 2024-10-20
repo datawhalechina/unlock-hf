@@ -56,7 +56,8 @@ nav:
     - Model工具:
       - 自动模型: 'chapter2/model/auto_model/auto_model.md'
     - Trainer工具:
-      - Callbacks回调函数: 'chapter2/trainer/callbacks.md'
+      - Callbacks回调函数: 'chapter2/trainer/callbacks/callbacks.md'
+      - Trainer训练自定义模型: 'chapter2/trainer/module2trainer/module2trainer.md'
 
   - PEFT工具:
     - 索引: 'chapter3/peft_index.md'
