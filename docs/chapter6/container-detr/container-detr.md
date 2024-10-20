@@ -80,6 +80,15 @@ DatasetDict({
 | `objects.category` | 目标类别列表，存储图片上所有目标的字符标签                                                 |
 | `objects.id`       | 目标ID列表，存储图片上所有目标的数字标签                                                   |
 
+下面为部分数据集：
+
+<iframe
+  src="https://huggingface.co/datasets/moyanxinxu/container/embed/viewer/default/train"
+  frameborder="0"
+  width="100%"
+  height="560px"
+></iframe>
+
 ### 加载处理器
 
 ```python
@@ -225,8 +234,8 @@ def collate_fn(batch):
 ### 加载模型
 
 ```python
-id2label = {0: "container"}
-label2id = {"container": 0}
+id2label = {0: "container-id"}
+label2id = {"container-id": 0}
 
 
 model = AutoModelForObjectDetection.from_pretrained(

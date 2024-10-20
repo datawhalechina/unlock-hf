@@ -116,5 +116,9 @@ with SummaryWriter('runs/unlock-hf') as writer:
 
 ## 参考资料
 
+<div class="grid cards" markdown>
+
 - [Visualizing Models, Data, and Training with TensorBoard](https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html)
 - [TensorBoard Projector 简易指南](https://blog.csdn.net/u010099080/article/details/122394146)
+
+</div>

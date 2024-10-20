@@ -14,3 +14,6 @@ title: 索引
     - [截断与填充](./tokenizer/truncation_and_padding.md)
 - 模型工具
     - [自动模型工具介绍](./model/auto_model/auto_model.md)
+- Trainer工具
+    - [回调函数](./trainer/callbacks/callbacks.md)
+    - [Trainer训练自定义的模型](./trainer/module2trainer/module2trainer.md)
