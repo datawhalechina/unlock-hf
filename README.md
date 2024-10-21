@@ -58,6 +58,8 @@
     - prompt-Tuning：@[鑫民](https://github.com/fancyboi999)
     - P-Tuning：@[鑫民](https://github.com/fancyboi999)
 
+项目保姆(o^^o)：高增玉
+
 负责人联系邮箱📫:
 <wwxy.mail@gmail.com>
 
