@@ -10,7 +10,7 @@
 
 内容大纲大致为:
 
-![banner](./docs/rep_index/nav.svg)
+![banner](./docs/rep_index/nav.png)
 
 | 章节   | 内容                     | 备注                                 |
 | :----- | :----------------------- | :----------------------------------- |
@@ -28,7 +28,7 @@
         大纲具体内容
     </summary>
 
-![map](./docs/rep_index/unlock-hf-plan.svg)
+![map](./docs/rep_index/map.png)
 </details>
 
 ## 参与贡献
