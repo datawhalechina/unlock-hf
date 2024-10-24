@@ -17,4 +17,5 @@ title: 索引
 - Trainer工具
     - [Trainer工具介绍](./trainer/trainer/trainer.md)
     - [Trainer训练自定义的模型](./trainer/module2trainer/module2trainer.md)
-    - [回调函数](./trainer/callbacks/callbacks.md)
+    - [Callbacks回调函数](./trainer/callbacks/callbacks.md)
+    - [Trainer工具实战](./trainer/trainer_example/trainer_example.md)
