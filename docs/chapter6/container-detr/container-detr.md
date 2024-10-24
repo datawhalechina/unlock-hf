@@ -108,7 +108,7 @@ aug = albumentations.Compose(
 )
 ```
 
-!!! Note
+!!! note "图像增广"
     `albumentations`函数库提供了各种各样的图像增强技术。开发者可以在这片代码中自定义图像增强方法。
 
 参数`transforms`指定图像的变化方式，参数`bbox_params`指定标签的变化方式。

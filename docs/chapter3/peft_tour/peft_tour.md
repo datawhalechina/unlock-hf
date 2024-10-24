@@ -173,7 +173,7 @@ print(tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens
 "Preheat the oven to 350 degrees and place the cookie dough in the center of the oven. In a large bowl, combine the flour, baking powder, baking soda, salt, and cinnamon. In a separate bowl, combine the egg yolks, sugar, and vanilla."
 ```
 
-!!! note
+!!! note "加载模型的方式"
 	我们既可以在训练完成后立即使用训练好的 `PEFT` 模型进行推理，也可以将模型保存到磁盘，稍后再加载它进行推理。选择哪种方法取决于你的具体需求。如果只是想快速测试模型，那么第一种方法更方便。如果需要长期保存和管理模型，那么第二种方法更合适。
 
 ## 参考资料

@@ -85,7 +85,7 @@ data = load_dataset("hfl/cmrc2018")
 
 通过返回结果可以看出 `data` 的数据类型为 `DatasetDict`，它是 `Datasets` 库中重要的数据类型。
 
-!!! Note
+!!! note "train_test_split"
 
 	并非所有数据集都包含训练集、验证集和测试集。有些数据集可能只有一个或两个子集。
 	对于数据集 `hfl/cmrc2018` 存在训练集、验证集和测试集。但是对于 `LooksJuicy/ruozhiba` 却只存在训练集。
@@ -168,7 +168,7 @@ Dataset({
 
 ```
 
-!!! Note
+!!! note "配置"
 
 	### 配置 (Configurations)
 

@@ -23,7 +23,7 @@ tokenizer = AutoTokenizer.from_pretrained('hfl/chinese-roberta-wwm-ext')
 
 经过上述代码，会产生一个与所预训练模型相对应的 **分词器实例**。
 
-!!! Note "备注"
+!!! note "备注"
 
     - 如果你加载的是 `bert-base-uncased` 模型，那么 `AutoTokenizer.from_pretrained("bert-base-uncased")` 会返回一个 `BertTokenizer` 实例。
     - 如果你加载的是 `gpt2` 模型，那么 `AutoTokenizer.from_pretrained("gpt2")` 会返回一个 `GPT2Tokenizer` 实例。

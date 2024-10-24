@@ -15,7 +15,7 @@ title: Unlock-HuggingFace
 
 内容大纲大致为:
 
-![nav](./rep_index/nav.svg)
+![nav](./rep_index/nav.png)
 
 | 章节   | 内容                     | 备注                                             |
 | :----- | :----------------------- | :----------------------------------------------- |
@@ -28,9 +28,8 @@ title: Unlock-HuggingFace
 | 第六章 | 项目案例                 |                                                  |
 | 第七章 | Gradio工具               |                                                  |
 
-大纲具体内容:
-
-![map](./rep_index/unlock-hf-plan.svg)
+??? example "大纲具体内容"
+    ![map](./rep_index/map.png)
 
 ## 参与贡献
 

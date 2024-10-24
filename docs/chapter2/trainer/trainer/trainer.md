@@ -28,7 +28,7 @@ title: Trainer工具介绍
 
 开发者需要编写大量的代码，这会让工程变得非常复杂。
 
-!!! Success
+!!! success "Trainer"
     `Trainer` 的优势在于其封装了这些复杂的操作，使开发者能够专注于模型本身，而无需担心底层实现细节。所以抛开繁杂的训练代码，使用`Trainer`是一件多么省时省力的事情，所以投入`Trainer`的怀抱吧。
 
 ## Trainer API

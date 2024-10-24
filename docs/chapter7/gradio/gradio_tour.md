@@ -46,7 +46,7 @@ pip install gradio
 
 ![live_rebuild](imgs/live_rebuild.gif)
 
-!!! note
+!!! note "热重载"
 	热重载还有很多可圈可点的功能，但是上面的案例就足够支撑后面的教程。
 
 ## 参考资料

@@ -64,7 +64,7 @@ from transformers import AutoTokenizer
 tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-zh-en")
 ```
 
-!!!note
+!!! note "正确设置语言"
     在做翻译任务中，请确保适用于多语言的分词器的原始语种和目标语种被正确设置，或者任务本身符合多语言分词器一开始的原始语言和目标语言。
 
 查看分词器原始语言与目标语言

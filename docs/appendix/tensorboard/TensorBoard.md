@@ -22,7 +22,7 @@ writer = SummaryWriter('runs/unlock-hf')
 
 创建**TensorBoard日志记录器**，日志数据将被存储在 `runs/unlock-hf` 目录下。
 
-!!!note note
+!!! note "上下文管理器"
     也可以使用`with`语句建立日志记录器。
 
 ## 可视化网络
@@ -111,7 +111,7 @@ with SummaryWriter('runs/unlock-hf') as writer:
 
 ![embedding](./imgs/embedding.png)
 
-!!!warning 注意
+!!! warning "注意"
     部分浏览器可能无法正常显示此部分界面。
 
 ## 参考资料
