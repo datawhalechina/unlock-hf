@@ -9,9 +9,6 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-extra_css:
-  - overides/css/link-preview.css
-  - overides/css/spantable.scss
 # extra:
 #   version:
 #     provider: mike
@@ -20,7 +17,6 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
-  - neoteroi.spantable
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.caret
@@ -59,6 +55,7 @@ nav:
       - Trainer工具介绍: 'chapter2/trainer/trainer/trainer.md'
       - Callbacks回调函数: 'chapter2/trainer/callbacks/callbacks.md'
       - Trainer训练自定义模型: 'chapter2/trainer/module2trainer/module2trainer.md'
+      - Trainer工具实战: 'chapter2/trainer/trainer_example/trainer_example.md'
 
   - PEFT工具:
     - 索引: 'chapter3/peft_index.md'
@@ -98,7 +95,6 @@ plugins:
     - search
     - git-revision-date-localized:
         enable_creation_date: true
-    - link-preview
     - minify:
         minify_html: true
         minify_js: true
