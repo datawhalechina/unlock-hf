@@ -31,41 +31,41 @@ title: 环境配置
 
 - 运行下载好的安装包
 
-  ![miniconda_setting.png](./imgs/miniconda_setting.png){ width="600" }
+  ![miniconda_setting](./imgs/miniconda_setting.png){ width="600" }
 
 - 一路next和agree，直到选择路径，可以根据自己偏好选择路径，这里选择默认。
 
-![destination_folder.png](./imgs/destination_folder.png){ width="600" }
+![destination_folder](./imgs/destination_folder.png){ width="600" }
 
 - 保持默认配置即可，下一步。
 
-![installation_options.png](./imgs/installation_options.png){ width="600" }
+![installation_options](./imgs/installation_options.png){ width="600" }
 
 - 完成，以后使用`conda` 从开始菜单点开即可。
 
-![conda_launcher.png](./imgs/conda_launcher.png){ width="600" }
+![conda_launcher](./imgs/conda_launcher.png){ width="600" }
 
 #### Linux 系统安装 Miniconda
 
 下载好的安装文件放在 Downloads 文件中
 
-![gnome_file_exploer.png](./imgs/gnome_file_exploer.png){ width="600" }
+![gnome_file_exploer](./imgs/gnome_file_exploer.png){ width="600" }
 
 在`Miniconda3`所在文件夹下打开终端
 
 - 为文件添加执行权限（文件名称要和自己下载的版本一致）命令是：`chmod a+x ./Miniconda3-latest-Linux-x86_64.sh`
 
-![gnome_shell.png](./imgs/gnome_shell.png){ width="600" }
+![gnome_shell](./imgs/gnome_shell.png){ width="600" }
 
 - 运行安装程序命令，命令是`sh ./Miniconda3-latest-Linux-x86_64.sh` ，然后根据提示回车。
 
-![license.png](./imgs/license.png){ width="600" }
+![license](./imgs/license.png){ width="600" }
 
 - 这里会让阅读相关协议，直接按`q` 结束阅读，输入`yes`，然后回车。
 
-![more.png](./imgs/more.png){ width="600" }
+![more](./imgs/more.png){ width="600" }
 
-![accept_license.png](./imgs/accept_license.png){ width="600" }
+![accept_license](./imgs/accept_license.png){ width="600" }
 
 ```bash
 - Press ENTER to confirm the location
@@ -80,15 +80,15 @@ title: 环境配置
 
 用户可以根据自己的需要选择安装目录。
 
-![conda_init.png](./imgs/conda_init.png){ width="600" }
+![conda_init](./imgs/conda_init.png){ width="600" }
 
 - 程序经过安装后会询问是否每次启动终端是否自动启动`conda`。输入`yes`然后回车。
 
-![conda_inited.png](./imgs/conda_inited.png){ width="600" }
+![conda_inited](./imgs/conda_inited.png){ width="600" }
 
 - 根据提示重启终端，再次打开就会出现`(base)` 。以后就在终端操作`conda`。
 
-![base.png](./imgs/base.png){ width="600" }
+![base](./imgs/base.png){ width="600" }
 
 ## 换源
 
@@ -102,11 +102,11 @@ title: 环境配置
 
 - 文件管理器文件路径地址栏敲：`%APPDATA%` 回车，快速进入 `C:\Users\User\AppData\Roaming` 文件夹。
 
-![APPDATA.png](./imgs/APPDATA.png){ width="600" }
+![APPDATA](./imgs/APPDATA.png){ width="600" }
 
 - 新建 pip 文件夹并在文件夹中新建 `pip.ini` 配置文件。
 
-![new_pipini.png](./imgs/new_pipini.png){ width="600" }
+![new_pipini](./imgs/new_pipini.png){ width="600" }
 
 - 使用记事本打开，输入以下内容，并按下`ctrl+s`保存。
 
@@ -119,7 +119,7 @@ mirrors = https://pypi.tuna.tsinghua.edu.cn/simple/
 trusted-host = pypi.tuna.tsinghua.edu.cn
 ```
 
-![win_pipini.png](./imgs/win_pipini.png){ width="600" }
+![win_pipini](./imgs/win_pipini.png){ width="600" }
 
 #### `conda`换源
 
@@ -127,7 +127,7 @@ trusted-host = pypi.tuna.tsinghua.edu.cn
 
 - 执行完`conda config --set show_channel_urls yes`后会在用户文件夹找到`.condarc` 文件。
 
-![condarc.png](./imgs/condarc.png){ width="600" }
+![condarc](./imgs/condarc.png){ width="600" }
 
 - 修改这个文件，替换为以下内容。
 
@@ -215,11 +215,11 @@ auto_activate_base: false
   - `env_name`：虚拟环境名称：见名知意，可以根据实际需求更改
   - `version` ：Python版本，例如3.8，以下是具体示例
 
-![conda_create_env.png](./imgs/conda_create_env.png){ width="600" }
+![conda_create_env](./imgs/conda_create_env.png){ width="600" }
 
 - 激活虚拟环境：`conda activate env_name` ，激活虚拟环境后，终端将会在括号内显示当前环境名称。
 
-![conda_activate_env.png](./imgs/conda_activate_env.png){ width="600" }
+![conda_activate_env](./imgs/conda_activate_env.png){ width="600" }
 
 - 安装包：`conda install package_name`或者`pip install package_name`
 - `pip`在安装包时临时更换镜像源：`pip install package_name -i https://pypi.tuna.tsinghua.edu.cn/simple`

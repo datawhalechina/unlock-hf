@@ -3,7 +3,7 @@ comments: true
 title: Trainer工具介绍
 ---
 
-![trainer.png](./imgs/trainer.png)
+![trainer](./imgs/trainer.png)
 
 ## 前言
 

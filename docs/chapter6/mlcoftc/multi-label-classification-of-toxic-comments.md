@@ -3,7 +3,7 @@ comments: true
 title: 面对有害言论, 是时候让AI重拳出击了
 ---
 
-![cls_logo](imgs/cls_logo.png)
+![cls_logo](./imgs/cls_logo.png)
 
 ## 总览
 

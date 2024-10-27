@@ -3,7 +3,7 @@ comments: true
 title: 一种简单的去噪方法
 ---
 
-![sora.jpg](./imgs/sora.jpg)
+![sora](./imgs/sora.jpg)
 
 ## 前言
 
@@ -63,7 +63,7 @@ def corrupt(image, amount):
 3. 将amount的形状设置为`(batch size, 1, 1, 1)`,第一个维度为`batch size`，每张图都对应一个噪声程度，其余的维度均为$1$便于与每张原始图像在相加的过程中进行**广播**。
 4. 对图像加入噪声的方式是，保留一部分原始图像，再加入对应强度的噪声。
 
-![noised.png](./imgs/noised.png)
+![noised](./imgs/noised.png)
 
 ### 简单的UNet
 
@@ -107,7 +107,7 @@ class SimpleUNet(nn.Module):
         return x
 ```
 
-![unet.jpeg](./imgs/unet.jpeg)
+![unet](./imgs/unet.jpeg)
 
 1. 形状为`(batch size, 1, 28, 28)`的小批量数据不断进行卷积与最大池化操作。特征图的维度变化是这样的
     - 左：`(batch size, 1, 28, 28)`—>`(batch size, 32, 28, 28)`—>`(batch size, 32, 14, 14)`—>`(batch size, 64, 14, 14)`—>`(batch size, 64, 7, 7)`—>`(batch size, 64, 7, 7)`
@@ -172,6 +172,6 @@ for x, y in test_loader:
     break
 ```
 
-![demo.png](./imgs/demo.png)
+![demo](./imgs/demo.png)
 
 效果还是能打的!

@@ -2,7 +2,7 @@
 comments: true
 title: Datasets
 ---
-![datasets](imgs/datasets.png)
+![datasets](./imgs/datasets.png)
 
 ## 前言
 
@@ -46,11 +46,11 @@ pip install datasets
 
 所有被托管的数据集都可以在[数据集主页](https://huggingface.co/datasets)查看，利用左侧的选项可以更快地筛选出符合需求的数据集。
 
-![data_hub](imgs/data_hub.png)
+![data_hub](./imgs/data_hub.png)
 
 经过选择后，可以打开数据集介绍页查看详细信息。对于每个数据集都会有其独特的仓库路径，待会加载数据集时，函数会根据仓库路径自动从 Hub 下载并加载数据集，例如下图的仓库路径为 `LooksJuicy/ruozhiba`，再比如另一个仓库路径为 `hfl/cmrc2018`。
 
-![rouzhiba](imgs/rouzhiba.png)
+![rouzhiba](./imgs/ruozhiba.png)
 
 当开发者选定了数据集后，便可以使用 `load_dataset` 函数加载数据集。
 
@@ -92,8 +92,8 @@ data = load_dataset("hfl/cmrc2018")
 
 	在实际的开发中，可以使用 `train_test_split` 函数将训练集划分为训练集和测试集。
 
-	![cmrc_split](imgs/cmrc_split.png)
-	![ruozhiba_split](imgs/ruozhiba_split.png)
+	![cmrc_split](./imgs/cmrc_split.png)
+	![ruozhiba_split](./imgs/ruozhiba_split.png)
 
 `DatasetDict` 就像一个 `Python` 字典，它包含多个数据集，每个数据集都有一个**名字**作为键和对应的**数据集对象**作为值。
 

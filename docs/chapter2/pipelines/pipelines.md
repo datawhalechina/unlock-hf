@@ -3,7 +3,7 @@ comments: true
 title: Pipelines让NLP任务化繁为简
 ---
 
-![pipeline](imgs/pipeline.png)
+![pipeline](./imgs/pipeline.png)
 
 ## 前言
 
@@ -23,7 +23,7 @@ Pipelines 的优势远不止于此：
 
 让我们把讨论范畴暂时限定在自然语言处理领域。
 
-![nlp_task](imgs/nlp_task.png)
+![nlp_task](./imgs/nlp_task.png)
 
 
 HuggingFace 拥有一个巨大的模型库，不同的模型实现不同的功能，不同的功能解决不同的现实世界需求，但是我们可以指定 pipelines 任务类型以精准调用模型，化解现实难题。所以深入了解 HuggingFace 所支持的任务类型，便显得尤为重要。开发者可以在 [pipelines任务类型](https://huggingface.co/docs/transformers/main/en/main_classes/pipelines)页面右侧大纲查阅所有任务管道。以下为目前所支持的任务管道。
