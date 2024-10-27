@@ -3,7 +3,7 @@ comments: true
 title: Trainer工具实战
 ---
 
-![word2vec](imgs/word2vec.png)
+![word2vec](./imgs/word2vec.png)
 
 ## 前言
 
@@ -250,6 +250,15 @@ Parameter Group 0
 
 Using lr_scheduler: <torch.optim.lr_scheduler.LambdaLR object at 0xffff4bcb5520>
 ```
+
+=== "变量可视化"
+    ![scaler](./imgs//scaler.png)
+
+=== "网络结构"
+    ![graph](./imgs//graph.png)
+
+=== "历史记录"
+    ![text](./imgs/text.png)
 
 ### 保存模型
 

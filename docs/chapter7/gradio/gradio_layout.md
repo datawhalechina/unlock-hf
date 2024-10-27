@@ -2,7 +2,7 @@
 comments: true
 title: 自定义布局
 ---
-![layout](imgs/layout.jpg)
+![layout](./imgs/layout.jpg)
 
 ## 前言
 
@@ -41,7 +41,7 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
-![row](imgs/row.png)
+![row](./imgs/row.png)
 
 下面是 `gradio.Row` 参数对照表：
 
@@ -68,7 +68,7 @@ demo.launch()
 	demo.launch()
 	```
 
-	![visible=False](imgs/visible.png)
+	![visible=False](./imgs/visible.png)
 
 === "equal_height"
 
@@ -82,7 +82,7 @@ demo.launch()
 	demo.launch()
 	```
 
-	![equal_height](imgs/equal_height.png)
+	![equal_height](./imgs/equal_height.png)
 
 === "show_progress"
 
@@ -96,7 +96,7 @@ demo.launch()
 	demo.launch ()
 	```
 
-	![show_progress](imgs/show_progress.png)
+	![show_progress](./imgs/show_progress.png)
 
 ## `Column`（列布局）
 
@@ -114,7 +114,7 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
-![coulmn](imgs/coulmn.png)
+![coulmn](./imgs/coulmn.png)
 
 下面是 `gradio.Column` 参数对照表：
 
@@ -153,7 +153,7 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
-![nesting](imgs/nesting.png)
+![nesting](./imgs/nesting.png)
 
 ## 参考资料
 

@@ -3,7 +3,7 @@ comments: true
 title: 扩散模型数学原理
 ---
 
-![ddpm](imgs/ddpm.png)
+![ddpm](./imgs/ddpm.png)
 
 ## 前向扩散
 
@@ -17,7 +17,7 @@ $$
 \sqrt{\beta}\times\epsilon+\sqrt{1-\beta}\times x \tag{1}
 $$
 
-![forward_noised.png](imgs/forward_noised.png)
+![forward_noised.png](./imgs/forward_noised.png)
 
 首先有原始图像 $x_0$ ，后续的 $x_t$ 是由图像 $x_{t-1}$ 和随机高斯噪声 $\epsilon_t$ 加权混合而成。也就是说**后一时刻的噪声图像是由前一时刻的图像加上当前时刻的高斯噪声产生的**。
 
@@ -75,7 +75,7 @@ $$
 
 接下来我们将使用公式 7 搞**亿**点事情。
 
-![imgs/forward_noise_copy.png](imgs/forward_noise_copy.png)
+![imgs/forward_noise_copy.png](./imgs/forward_noise_copy.png)
 
 使用公式 7 我们可以从图像 $x_0$ 一步步迭代到 $x_t$ ，但是很多时候我们就是想一步到位，我现在就是想避开这样的一个循环过程，从 $x_0$ 到 $x_t$ 一步到位, 或者到任意时刻。
 

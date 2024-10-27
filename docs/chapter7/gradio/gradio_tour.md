@@ -4,7 +4,7 @@ title: 让机器学习应用触手可及
 ---
 
 
-![gradio](imgs/gradio.png)
+![gradio](./imgs/gradio.png)
 
 ## 前言
 
@@ -44,7 +44,7 @@ pip install gradio
 
 演示🎞：
 
-![live_rebuild](imgs/live_rebuild.gif)
+![live_rebuild](./imgs/live_rebuild.gif)
 
 !!! note "热重载"
 	热重载还有很多可圈可点的功能，但是上面的案例就足够支撑后面的教程。

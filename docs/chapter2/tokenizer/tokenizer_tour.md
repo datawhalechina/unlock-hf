@@ -3,7 +3,7 @@ comments: true
 title: 分词
 ---
 
-![tokenize](imgs/tokenize.png)
+![tokenize](./imgs/tokenize.png)
 
 ## 前言
 

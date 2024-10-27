@@ -3,7 +3,7 @@ comments: true
 title: 分词器
 ---
 
-![tokenizers](imgs/tokenizers.png)
+![tokenizers](./imgs/tokenizers.png)
 
 ## 加载分词器
 

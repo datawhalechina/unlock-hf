@@ -3,7 +3,7 @@ comments: true
 title: PEFT（Parameter-Efficient Fine-Tuning）
 ---
 
-![peft](imgs/peft.png)
+![peft](./imgs/peft.png)
 
 ## 前言
 
