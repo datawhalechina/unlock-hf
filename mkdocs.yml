@@ -5,13 +5,8 @@ repo_url: https://github.com/datawhalechina/unlock-hf
 edit_uri: edit/main/docs/
 
 extra_javascript:
-  - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-# extra:
-#   version:
-#     provider: mike
+  - assets/javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
   - admonition
@@ -95,6 +90,7 @@ plugins:
     - search
     - git-revision-date-localized:
         enable_creation_date: true
+    - link-marker
     - minify:
         minify_html: true
         minify_js: true
@@ -102,7 +98,9 @@ plugins:
         htmlmin_opts:
           remove_comments: true
         cache_safe: true
-    # - pdf-export
+    - print-site:
+        enumerate_headings: false
+
 
 theme:
   custom_dir: overides
