@@ -5,7 +5,6 @@ repo_url: https://github.com/datawhalechina/unlock-hf
 edit_uri: edit/main/docs/
 
 extra_javascript:
-  - assets/javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
@@ -98,9 +97,6 @@ plugins:
         htmlmin_opts:
           remove_comments: true
         cache_safe: true
-    - print-site:
-        enumerate_headings: false
-
 
 theme:
   custom_dir: overides
