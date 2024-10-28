@@ -7,7 +7,7 @@ title: Trainer训练自定义模型
 
 ## 前言
 
-理论上来讲，基于`torch`或`tensorflow`实现的模型，并且**正确**重载对应方法（`forward`方法和`from_pretrained`方法），那么就可以借助`Trainer`这个强大的工具避开繁琐的代码编写，提高工作效率。
+理论上来讲，基于`torch`或`tensorflow`实现的模型，并且**正确**重载对应方法（`forward`、`from_pretrained`等方法），那么就可以借助`Trainer`这个强大的工具避开繁琐的代码编写，提高工作效率。
 
 下面将借用动手学深度学习内的线性回归的简洁实现来封装基于`nn.Module`实现的模型，以进一步使用`Trainer`。将重点讲解封装步骤，`d2l`部分不再展开。
 
@@ -54,7 +54,7 @@ data = CustDatasetForRegression(true_w, true_b, 1000)
 
 ### 定义模型
 
-```python
+```python hl_lines="6 16 17 23 27"
 class CustomModelForRegression(nn.Module):
     def __init__(self):
         super(CustomModelForRegression, self).__init__()
@@ -70,17 +70,31 @@ class CustomModelForRegression(nn.Module):
         else:
             return {"logits": logits}
 
+    @classmethod
     def from_pretrained(cls, pretrained_model_name_or_path, *model_args, **kwargs):
         model = cls(*model_args, **kwargs)
-        state_dict = torch.load(pretrained_model_name_or_path)
+        state_dict = torch.load(f"{pretrained_model_name_or_path}/model.bin")
         model.load_state_dict(state_dict)
         return model
+
+    def save_pretrained(self, save_directory):
+        self.to(torch.device("cpu"))
+        torch.save(self.state_dict(), f"{save_directory}/model.bin")
+
+    def predict(self, inputs, device):
+        device = device or self.device
+        with torch.no_grad():
+            inputs = inputs.to(device)
+            out = self(inputs, None)
+            return out["logits"].flatten()
 ```
 
 自定义模型的步骤：
 
 1. 重载前向传播逻辑。需要注意的是，应当有是否传入`labels`的判断，无论返回的是`ModelOutput`类，还是`Python`的字典，都应包含`logits`，当有标签传入时，还应有`loss`字段。
-2. 重载加载预训练模型逻辑。
+2. 重载加载预训练模型的方法。
+3. 重载保存模型的方法。
+4. 重载用于预测的方法。
 
 ### 创建模型
 
@@ -99,49 +113,58 @@ CustomModelForRegression(
 ### 创建训练器
 
 ```python
-optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+optimizer = torch.optim.SGD(model.parameters(), lr=0.5)
 ```
 
 ```python
 training_args = TrainingArguments(
     output_dir="./results",
-    num_train_epochs=100,
+    num_train_epochs=20,
     logging_strategy="epoch",
     per_device_train_batch_size=512,
 )
 
 trainer = Trainer(
-    model=model,  # 自定义的模型实例
-    args=training_args,  # 训练参数
+    model=model,
+    args=training_args,
     train_dataset=data,
-    optimizers=(optimizer, None),  # 传递优化器
+    optimizers=(optimizer, None),
 )
 
-trainer.train()  # 开始训练
+trainer.train()
 ```
 
-## 训练结果表格
+| Step | Training Loss | Step | Training Loss | Step | Training Loss | Step | Training Loss |
+| ---- | ------------- | ---- | ------------- | ---- | ------------- | ---- | ------------- |
+| 2    | 31.782100     | 12   | 1.636300      | 22   | 0.000100      | 32   | 0.000100      |
+| 4    | 21.786800     | 14   | 0.325800      | 24   | 0.000100      | 34   | 0.000100      |
+| 6    | 14.083900     | 16   | 0.008600      | 26   | 0.000100      | 36   | 0.000100      |
+| 8    | 8.247200      | 18   | 0.000300      | 28   | 0.000100      | 38   | 0.000100      |
+| 10   | 4.171000      | 20   | 0.000100      | 30   | 0.000100      | 40   | 0.000100      |
 
-| Step     | Training Loss |
-| -------- | ------------- |
-| 2        | 32.637400     |
-| 4        | 30.398200     |
-| 6        | 28.260700     |
-| 8        | 26.220500     |
-| 10       | 24.275400     |
-| $\cdots$ | $\cdots$      |
-| 194      | 0.000100      |
-| 196      | 0.000100      |
-| 198      | 0.000100      |
-| 200      | 0.000100      |
+### 保存与加载
+
+```python
+model.save_pretrained("./model/")
+
+model.from_pretrained("./model/")
+```
 
 ### 推理
 
 ```python title='print(model.net[0].weight, "\n", model.net[0].bias)'
 Parameter containing:
-tensor([[ 2.0000, -3.3999]], requires_grad=True)
+tensor([[ 1.9996, -3.4005]], requires_grad=True)
  Parameter containing:
-tensor([4.2001], requires_grad=True)
+tensor([4.2004], requires_grad=True)
+```
+
+```python
+model.predict(torch.tensor([[2.0, 3.0], [6.0, 7.0]]), torch.device("cpu"))
+```
+
+```python
+tensor([-2.0019, -7.6055])
 ```
 
 可以看到基本和答案吻合了。
@@ -150,8 +173,24 @@ tensor([4.2001], requires_grad=True)
 
 <div class="grid cards" markdown>
 
-1. [动手学深度学习（线性回归的简单实现）](https://zh.d2l.ai/chapter_linear-networks/linear-regression-concise.html)
-2. [昇腾社区（如何封装nn.Module并送入Trainer）](https://www.hiascend.com/forum/thread-0231151069966226074-1-1.html)
-3. [HuggingFace遇到的坑](https://www.cnblogs.com/zhangxuegold/p/17534627.html)
+- 动手学深度学习
+
+    ---
+[线性回归的简单实现](https://zh.d2l.ai/chapter_linear-networks/linear-regression-concise.html)
+
+- 昇腾社区
+
+    ---
+[封装nn.Module并送入Trainer](https://www.hiascend.com/forum/thread-0231151069966226074-1-1.html)
+
+- 博客园
+
+    ---
+[HuggingFace遇到的坑](https://www.cnblogs.com/zhangxuegold/p/17534627.html)
+
+- DBGPT
+
+    ---
+[财务报表商务分析机器人](https://github.com/eosphoros-ai/dbgpts/blob/main/workflow/financial-robot-app/financial_robot_app/model.py)
 
 </div>
