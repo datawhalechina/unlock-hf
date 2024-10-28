@@ -98,7 +98,9 @@ plugins:
         htmlmin_opts:
           remove_comments: true
         cache_safe: true
-    - print-site
+    - print-site:
+        enumerate_headings: false
+
 
 theme:
   custom_dir: overides
