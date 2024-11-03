@@ -3,7 +3,7 @@ comments: true
 title: 面对有害言论, 是时候让AI重拳出击了
 ---
 
-![cls_logo](./imgs/cls_logo.png)
+![text-classification](./imgs/text-classification.png)
 
 ## 总览
 
@@ -11,16 +11,15 @@ title: 面对有害言论, 是时候让AI重拳出击了
 
 ## 数据
 
-<figure markdown>
-  ![trainset](./imgs/train.png "训练集"){width="600"}
-  <figcaption>训练集</figcaption>
-</figure>
+<div class="grid" markdown>
 
-<figure markdown>
-  ![testset](./imgs/test.png "测试集"){align=left, width="600"}
-  <figcaption>测试集</figcaption>
-</figure>
+!!! success "训练集"
+    ![trainset](./imgs/train.png "训练集")
 
+!!! success "测试集"
+    ![testset](./imgs/test.png "测试集")
+
+</div>
 
 ## 代码
 

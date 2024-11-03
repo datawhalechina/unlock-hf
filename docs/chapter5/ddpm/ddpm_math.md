@@ -63,8 +63,6 @@ $$
 - 特别注意一下，$0<\beta_1<\beta_2<\beta_3<\ldots<\beta_{t-1}<\beta_{t}<1$，在一开始的 $\beta$ 取值较小，也就是噪声的权重较小，越往后的 $\beta$ 的取值逐渐变大，也就是噪声的权重较大。
 - **规律就是在前期图像的扩散速率较低，到后期图像的扩散速率逐步加快。**
 
----
-
 为了简化后续的推导，在这里用 $\alpha_t$ 取代 $1-\beta_t$。
 
 所以公式又能写成：
@@ -308,18 +306,8 @@ $$
 
 <div class="grid cards" markdown>
 
-- Bilibili 大白话 AI
-
-    ---
-
-    [大白话AI | 图像生成模型DDPM | 扩散模型 | 生成模型 | 概率扩散去噪生成模型](https://www.bilibili.com/video/BV1tz4y1h7q1)
-
-	---
-
-	[大白话AI | 神经网络 | 概率空间 | 边缘概率 | 各向同性高斯分布 |](https://www.bilibili.com/video/BV1xQ4y1w7ex)
-
-	---
-
-	[三维动画展示 AIGC 扩散生成全过程！| 大白话 AI | DDPM 模型解析之三 | 扩散生成模型](https://www.bilibili.com/video/BV1hZ421y7id)
+- [大白话AI | 图像生成模型DDPM | 扩散模型 | 生成模型 | 概率扩散去噪生成模型](https://www.bilibili.com/video/BV1tz4y1h7q1)
+- [大白话AI | 神经网络 | 概率空间 | 边缘概率 | 各向同性高斯分布 |](https://www.bilibili.com/video/BV1xQ4y1w7ex)
+- [三维动画展示 AIGC 扩散生成全过程！| 大白话 AI | DDPM 模型解析之三 | 扩散生成模型](https://www.bilibili.com/video/BV1hZ421y7id)
 
 </div>
