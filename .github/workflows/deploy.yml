@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name : install dependencies
+        run: pip install mkdocs mkdocs-get-deps mkdocs-git-revision-date-localized-plugin mkdocs-glightbox mkdocs-link-marker mkdocs-link-preview-plugin mkdocs-material mkdocs-material-extensions mkdocs-minify-plugin mkdocs-print-site-plugin neoteroi-mkdocs
+      - name: deploy to gh-pages
+        run: mkdocs gh-deploy
