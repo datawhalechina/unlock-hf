@@ -67,13 +67,12 @@ peft_config = LoraConfig(task_type=TaskType.SEQ_2_SEQ_LM, inference_mode=False, 
 所有的微调方法的配置及其参数介绍都能在 [Adapters HuggingFace](https://huggingface.co/docs/peft/main/en/package_reference/adalora#peft.AdaLoraConfig) 左侧导航栏被找到。
 
 进入详细介绍界面，整体能看到相应 `PEFT` 方法的介绍
-![lora_config](./imgs/lora_config.png)
+
+![lora](./imgs/lora.png)
 
 其次是相应 `PEFT` 方法的内置的参数，在 `Parameters` 栏列出了最为重要的参数，使用者可以根据说明及需求自定义相关参数。
 
-![lora_parameters](./imgs/lora_parameters.png)
-
----
+![lora_config](./imgs/lora_config.png)
 
 ## `PeftModel`
 
@@ -109,7 +108,9 @@ model = get_peft_model(model, peft_config)
 
 ## 训练
 
-🎉 到现在已经成功地设置好了被 `PEFT` 方法包裹后的模型了，并且准备好开始训练了！接下来就可以使用 `Trainer`, `Accelerate`, 或者自定义的 `PyTorch` 的训练流程。
+🎉 到现在已经成功地设置好了被 `PEFT` 方法包裹后的模型了，并且准备好开始训练了！
+
+接下来就可以使用 `Trainer`, `Accelerate`, 或者自定义的 `PyTorch` 的训练流程。
 
 训练部分不是本节的重点，故直接引用官方的代码。
 
@@ -184,32 +185,24 @@ print(tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens
 
     ---
 
-    了解 已有的 `PEFT` 方法。
-
-    [--> Adapters HuggingFace](https://huggingface.co/docs/peft/main/en/package_reference/adalora#peft.AdaLoraConfig)
+    [Adapters HuggingFace](https://huggingface.co/docs/peft/main/en/package_reference/adalora#peft.AdaLoraConfig)
 
 - `PEFT` 支持的任务类型
 
     ---
 
-    探索 `PEFT` 支持用于微调的不同下游任务类型。
+    [Task_type Huggingface](https://huggingface.co/docs/peft/main/en/package_reference/peft_types#peft.TaskType)
 
-    [--> Task_type Huggingface](https://huggingface.co/docs/peft/main/en/package_reference/peft_types#peft.TaskType)
-
-- Get Started with PEFT
+- Hugging Face 官方的的参数高效微调快速入门和示例。
 
     ---
 
-    Hugging Face 官方的的参数高效微调快速入门和示例。
-
-    [--> PEFT HuggingFace](https://huggingface.co/docs/peft/quicktour)
+    [PEFT HuggingFace](https://huggingface.co/docs/peft/quicktour)
 
 - `PEFT`方法默认的目标模块
 
     ---
 
-    `PEFT` 库中 `constants.py` 文件定义了 `PEFT` 库中使用的各种常量，其中包括了默认的目标模块。
-
-    [--> peft.utils.constants](https://github.com/huggingface/peft/blob/main/src/peft/utils/constants.py)
+    [peft.utils.constants](https://github.com/huggingface/peft/blob/main/src/peft/utils/constants.py)
 
 </div>

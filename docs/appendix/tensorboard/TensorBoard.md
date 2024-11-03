@@ -3,7 +3,7 @@ comments: true
 title: 可视化工具TensorBoard
 ---
 
-![tensorflow](./imgs/tensorflow.jpg)
+![tensorflow](./imgs/tensorflow.png)
 
 ## 快速开始
 
