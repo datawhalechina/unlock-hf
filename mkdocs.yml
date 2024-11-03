@@ -35,6 +35,7 @@ nav:
   - Datasets工具:
     - 索引: "chapter1/datasets_index.md"
     - Arrow介绍: 'chapter1/arrow_tour/arrow_tour.md'
+    - Features介绍: 'chapter1/features_tour/features_tour.md'
     - Datasets介绍: 'chapter1/dataset_tour/datasets.md'
     - 自定义数据集: 'chapter1/custom_dataset/custom_dataset.md'
   - Transformers工具:

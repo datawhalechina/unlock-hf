@@ -3,8 +3,7 @@ comments: true
 title: Arrow介绍
 ---
 
-!!! note "前提声明"
-    翻译自[HuggingFace Arrow](https://huggingface.co/docs/datasets/main/en/about_arrow)
+!!! quote "翻译自[HuggingFace Arrow](https://huggingface.co/docs/datasets/main/en/about_arrow)"
 
 ## `Arrow`是什么？
 
