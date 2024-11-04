@@ -3,39 +3,179 @@ comments: true
 title: Features介绍
 ---
 
-!!! quote "翻译自[HuggingFace Dataset Features](https://huggingface.co/docs/datasets/main/en/about_dataset_features)"
+## 前言
 
-## `Features`介绍
+`Features`类是一种用来定义数据集结构的特殊字典，该字典期望的格式为`dict[str, FieldType]`，其中键对应列名，值对应相应的数据类型。
 
-`Features`定义了数据集的内部结构。它用于指定底层序列化格式。更重要的是，`Features`包含从列名称和类型到`ClassLabel`的所有内容的高级信息。你可以将`Features`视为数据集的核心。
+有关受支持的`FieldType`类型可以查阅[HuggingFace关于`FieldType`的文档](https://huggingface.co/docs/datasets/package_reference/main_classes#datasets.Features)，以下是受支持的数据类型及其描述。
 
-| 特性                  | 描述                                                                               |
-| --------------------- | ---------------------------------------------------------------------------------- |
-| 定义数据集结构        | 就像数据集的蓝图，告诉我们数据集包含哪些列（或特征），以及每列数据的类型。         |
-| 指定序列化格式        | 指定数据是如何存储和表示的，例如，使用 CSV、JSON 还是其他格式。                    |
-| 包含高级信息          | 除了列名和类型，还可能包含其他信息，例如：                                         |
-| `ClassLabel`          | 如果数据集用于分类任务，包含类别标签的信息，例如，"猫"、"狗" 或 "鸟"。             |
-| `Feature Description` | 对每个特征的描述，解释其含义和用途。                                               |
-| `Feature Importance`  | 对于某些机器学习模型，包含特征重要性的信息，表明哪些特征对模型的预测结果影响更大。 |
+| `FieldType`                                   | 描述                                                                                                                       |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `Value`                                       | 指定单一数据类型，例如`int64`或`string`。                                                                                  |
+| `ClassLabel`                                  | 指定一组预定义的类别，这些类别可以具有与之关联的标签，并且将作为整数存储在数据集中。比如`['bad', 'ok', 'good']`            |
+| `dict`                                        | 指定一个复合特征，其中包含子字段到子特征的映射。子字段可以任意方式嵌套。                                                   |
+| `list`, `LargeList`, `Sequence`               | 指定一个复合特征，其中包含一个子特征序列，所有子特征的类型相同。                                                           |
+| `Array2D`, `Array3D`, `Array4D`, `Array5D`    | 用于存储多维数组。                                                                                                         |
+| `Audio`                                       | 用于存储指向音频文件的绝对路径或一个字典，其中包含指向音频文件的相对路径和字节内容。                                       |
+| `Image`                                       | 用于存储指向图像文件的绝对路径、一个`NumPy`数组对象、一个`PIL`对象或一个`dict`，其中包含指向图像文件的相对路径和字节内容。 |
+| `Translation`, `TranslationVariableLanguages` | 特定于机器翻译。                                                                                                           |
 
-`Features`格式很简单：`dict[column_name, column_type]`。它是一个字典，其中包含列名称和列类型对。有很多代表数据类型的列类型。
+## `Features`属性介绍
 
-让我们来看看`GLUE`基准中的`MRPC`数据集的`features`：
+### 简单数据集定义
 
 ```python
-from datasets import load_dataset
-
-dataset = load_dataset("glue", "mrpc", split="train")
+from datasets import Features, Value, ClassLabel
+features = Features(
+    {
+        "text": Value(dtype="string"),
+        "label": ClassLabel(num_classes=3, names=["negative", "positive"]),
+    }
+)
 ```
 
-```python title="dataset.feature"
+该例子定义了一个包含两个特征的简单数据集结构。
+
+- `text`：字符串类型，用于存储文本数据。
+- `label`：类别标签类型，用于存储情感类别标签，取值为`negative`或`positive`。
+
+```python title="features"
 {
-    "sentence1": Value(dtype="string", id=None),
-    "sentence2": Value(dtype="string", id=None),
-    "label": ClassLabel(names=["not_equivalent", "equivalent"], id=None),
-    "idx": Value(dtype="int32", id=None),
+    "text": Value(dtype="string", id=None),
+    "label": ClassLabel(names=["negative", "positive"], id=None),
 }
 ```
+
+### 复合数据集定义
+
+```python
+from datasets import Features, Value, ClassLabel, Sequence
+
+features = Features(
+    {
+        "text": Value(dtype="string"),
+        "entities": Sequence(
+            {
+                "start": Value(dtype="int64"),
+                "end": Value(dtype="int64"),
+                "label": ClassLabel(num_classes=3, names=["PERSON", "ORG", "LOC"]),
+            }
+        ),
+    }
+)
+```
+
+该例子定义了一个包含`entities`复合特征的数据集结构。
+
+- `text`: 字符串类型，用于存储文本数据。
+- `entities`: 序列类型，用于存储文本中的实体信息。每个实体包含三个特征。
+    - `start`: 整数类型，表示实体在文本中的起始位置。
+    - `end`: 整数类型，表示实体在文本中的结束位置。
+    - `label`: 类别标签类型，表示实体的类别，可以是`PERSON`, `ORG`或`LOC`。
+
+```python title="features"
+{
+    "text": Value(dtype="string", id=None),
+    "entities": Sequence(
+        feature={
+            "start": Value(dtype="int64", id=None),
+            "end": Value(dtype="int64", id=None),
+            "label": ClassLabel(names=["PERSON", "ORG", "LOC"], id=None),
+        },
+        length=-1,
+        id=None,
+    ),
+}
+```
+
+### 多维数组
+
+```python
+from datasets import Features, Array2D, Value
+
+features = Features(
+    {
+        "image": Array2D(shape=(224, 224, 3), dtype="float32"),
+        "label": Value("int64"),
+    }
+)
+```
+
+该例子定义了一个包含`image`特征的数据集结构。
+
+- `image`: 多维数组类型，用于存储图像数据，形状为`(224, 224, 3)`，数据类型为`float32`。
+- `label`: 整数类型，用于存储图像的类别标签。
+
+```python title="features"
+{
+    "image": Array2D(shape=(224, 224, 3), dtype="float32", id=None),
+    "label": Value(dtype="int64", id=None),
+}
+```
+
+### 音频数据
+
+```python
+from datasets import Features, Audio, ClassLabel
+
+features = Features(
+    {
+        "audio": Audio(sampling_rate=44100),
+        "label": ClassLabel(num_classes=2, names=["negative", "positive"]),
+    }
+)
+```
+
+该例子定义了一个包含`audio`和`label`特征的数据集结构。
+
+- `audio`: 音频类型，用于存储音频数据，采样率为`44100 Hz`。
+- `label`: 整数类型，用于存储音频情感类别标签。
+
+```python title="features"
+{
+    "audio": Audio(sampling_rate=44100, mono=True, decode=True, id=None),
+    "label": ClassLabel(names=["negative", "positive"], id=None),
+}
+```
+
+### 机器翻译
+
+```python
+from datasets import Features, Translation, Value
+
+features = Features(
+    {
+        "source_text": Value(dtype="string"),
+        "target_text": Translation(languages=["en", "fr"]),
+    }
+)
+```
+
+该例子定义了一个包含`source_text`和`target_text`特征的数据集结构。
+
+- `source_text`: 字符串类型，用于存储源语言文本数据。
+- `target_text`: 翻译类型，用于存储目标语言文本数据，支持英语和法语两种语言。
+
+```python title="features"
+{
+    "source_text": Value(dtype="string", id=None),
+    "target_text": Translation(languages=["en", "fr"], id=None),
+}
+```
+
+### 其他
+
+有关受支持的`Value`数据类型的完整列表，可以查阅[HuggingFace关于`Value`的文档](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Value)，以下是整理出来的常用的数据类型及其描述。
+
+| 数据类型 | 描述           | 数据类型  | 描述               |
+| -------- | -------------- | --------- | ------------------ |
+| `null`   | 表示值不存在   | `float32` | 32位浮点数         |
+| `bool`   | 布尔值         | `float64` | 64位浮点数         |
+| `int32`  | 32位有符号整数 | `date64`  | 日期，包含时间信息 |
+| `int64`  | 64位有符号整数 | `string`  | 文本数据           |
+| $\cdots$ | $\cdots$       | $\cdots$  | $\cdots$           |
+
+下面是数据集`mrpc`的数据集主页，可以看到网页根据`Features`在数据集卡片上正确显示了列名及其数据类型。
 
 <iframe
   src="https://huggingface.co/datasets/nyu-mll/glue/embed/viewer/mrpc/train"
@@ -44,44 +184,125 @@ dataset = load_dataset("glue", "mrpc", split="train")
   height="560px"
 ></iframe>
 
-有关受支持数据类型的完整列表，可以查阅[HuggingFace关于`Value`的文档](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Value)。
+## `Features`方法介绍
 
-以下是整理出来的数据类型及其描述。
+有关受支持的`Features`方法的完整列表，可以查阅[HuggingFace关于`Features`方法的文档](https://huggingface.co/docs/datasets/v3.1.0/en/package_reference/main_classes#datasets.Features)，以下是整理出来的常用方法及其描述。
 
-<div class="grid" markdown>
+| 方法                | 说明                                                   |
+| ------------------- | ------------------------------------------------------ |
+| `from_dict`         | 从字典构建`Features`。                                 |
+| `to_dict`           | 返回特征的字典表示。                                   |
+| `copy`              | `Features`对象的深复制。                               |
+| `reorder_fields_as` | 重新排序字段以匹配另一个`Features`对象的顺序。         |
+| `flatten`           | 通过删除嵌套字典并创建具有连接名称的新列来扁平化特征。 |
+| $\cdots$            | $\cdots$                                               |
 
-| 数据类型                   | 描述           |
-| -------------------------- | -------------- |
-| `null`                     | 表示值不存在   |
-| `bool`                     | 布尔值         |
-| `int8`                     | 8位有符号整数  |
-| `int16`                    | 16位有符号整数 |
-| `int32`                    | 32位有符号整数 |
-| `int64`                    | 64位有符号整数 |
-| `uint8`                    | 8位无符号整数  |
-| `uint16`                   | 16位无符号整数 |
-| `uint32`                   | 32位无符号整数 |
-| `uint64`                   | 64位无符号整数 |
-| `float16`                  | 16位浮点数     |
-| `float32` (alias `float`)  | 32位浮点数     |
-| `float64` (alias `double`) | 64位浮点数     |
+### `from_dict`方法
 
-| 数据类型                                 | 描述                               |
-| ---------------------------------------- | ---------------------------------- |
-| `time32[(s/ms)]`                         | 时间点，精度为秒或毫秒             |
-| `time64[(us/ns)]`                        | 时间点，精度为微秒或纳秒           |
-| `timestamp[(s/ms/us/ns)]`                | 时间戳，精度为秒、毫秒、微秒或纳秒 |
-| `timestamp[(s/ms/us/ns), tz=(tzstring)]` | 时间戳，包含时区偏移               |
-| `date32`                                 | 日期，不包含时间信息               |
-| `date64`                                 | 日期，包含时间信息                 |
-| `duration[(s/ms/us/ns)]`                 | 时间间隔或持续时间                 |
-| `decimal128(precision, scale)`           | 十进制数，固定精度和比例           |
-| `decimal256(precision, scale)`           | 十进制数，精度和比例更高           |
-| `binary`                                 | 原始二进制数据                     |
-| `large_binary`                           | 大型二进制数据                     |
-| `string`                                 | 文本数据                           |
-| `large_string`                           | 大型文本数据                       |
+```python
+from datasets import Features
+
+Features.from_dict({"text": { "_type": "Value", "dtype": "string", "id": None}})
+```
+
+该方法使用从`from_dict`方法从字典创建`Features`对象。
+
+```python title='Features.from_dict({"text": {"_type": "Value", "dtype": "string", "id": None,}})'
+{"text": Value(dtype="string", id=None)}
+```
+
+### `to_dict`方法
+
+```python
+from datasets import Features, Value
+
+features = Features(
+    {
+        "text": Value(dtype="string"),
+        "label": Value(dtype="int64"),
+    }
+)
+```
+
+该例子首先创建了`features`，然后利用`to_dict`方法返回了字典格式的`features`。
+
+```python title="features.to_dict()"
+{
+    "text": {"dtype": "string", "_type": "Value"},
+    "label": {"dtype": "int64", "_type": "Value"},
+}
+```
+
+### `reorder_fields_as`方法
+
+```python
+from datasets import Features, Value, ClassLabel
+
+features = Features(
+    {
+        "text": Value("string"),
+        "label": ClassLabel(names=["positive", "negative"]),
+    }
+)
+
+other_features = Features(
+    {
+        "label": ClassLabel(names=["positive", "negative"]),
+        "text": Value("string"),
+    }
+)
+reordered_features = features.reorder_fields_as(other_features)
+```
+
+该例子创建字段顺序不同的两个`Features`对象，然后利用`reorder_fields_as`重新排序`features`字段以匹配`other_features`字段的顺序。
+
+```python title="reordered_features"
+{
+    "label": ClassLabel(names=["positive", "negative"], id=None),
+    "text": Value(dtype="string", id=None),
+}
+```
+
+### `flatten`方法
+
+```python
+from datasets import Features, Value
+
+nested_features = Features(
+    {
+        "a": Value("string"),
+        "b": {
+            "c": Value("int32"),
+            "d": Value("float32"),
+        },
+    }
+)
+
+flattened_features = nested_features.flatten()
+```
+
+```python title="nested_features"
+{
+    "a": Value(dtype="string", id=None),
+    "b": {"c": Value(dtype="int32", id=None), "d": Value(dtype="float32", id=None)},
+}
+```
+
+该例子利用`flatten`方法删除嵌套字典并创建具有连接名称的新列来扁平化特征。
+
+```python title="flattened_features"
+{
+    "a": Value(dtype="string", id=None),
+    "b.c": Value(dtype="int32", id=None),
+    "b.d": Value(dtype="float32", id=None),
+}
+```
+
+## 参考资料
+
+<div class="grid cards" markdown>
+
+1. [HuggingFace关于`FieldType`/`Features`的文档](https://huggingface.co/docs/datasets/package_reference/main_classes#datasets.Features)
+2. [HuggingFace关于`Value`的文档](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Value)
 
 </div>
-
-## 未完待续
