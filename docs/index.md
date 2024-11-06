@@ -7,7 +7,7 @@ title: Unlock-HuggingFace
 
 ![banner](./rep_index/images_brand_logos_hf-logo-with-white-title.png)
 
-近年来，自然语言处理（NLP）领域随着 Transformer 架构的出现取得了突破性进展，HuggingFace 作为 NLP 社区的重要力量，提供了海量的预训练模型和众多强大易用的函数库，极大地降低了 NLP 应用开发的门槛。
+近年来，自然语言处理（NLP）领域随着 Transformer 架构的出现取得了突破性进展，[HuggingFace](https://huggingface.co) 作为 NLP 社区的重要力量，提供了海量的预训练模型和众多强大易用的函数库，极大地降低了 NLP 应用开发的门槛。
 
 本项目旨在为学习者提供深入学习 HuggingFace😊 生态系统的教程，并通过完成生动有趣的具体项目提升学习者实践水平。
 
@@ -36,7 +36,7 @@ title: Unlock-HuggingFace
 - 如果你想参与到项目中来欢迎查看项目的 [Issue](https://github.com/datawhalechina/unlock-hf/issues) 查看没有被分配的任务✨。
 - 如果你发现了一些问题，欢迎在 [Issue](https://github.com/datawhalechina/unlock-hf/issues) 中进行反馈🐛。
 
-如果你对 Datawhale 很感兴趣并想要发起一个新的项目，欢迎查看 [Datawhale 贡献指南](https://github.com/datawhalechina/DOPMC#%E4%B8%BA-datawhale-%E5%81%9A%E5%87%BA%E8%B4%A1%E7%8C%AE)。
+如果你对 Datawhale 很感兴趣并想要发起一个新的项目，欢迎查看 [Datawhale 贡献指南](https://github.com/datawhalechina/DOPMC#为-datawhale-做出贡献)。
 
 ## 贡献者名单
 
