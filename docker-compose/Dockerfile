@@ -16,9 +16,10 @@ COPY --from=miniconda-stage /opt/conda /opt/conda
 ENV PATH="/opt/conda/bin:${PATH}"
 WORKDIR /root
 
-COPY .condarc /root/.condarc
+COPY condarc /root/.condarc
 COPY Dockerfile /root/dockerfile/Dockerfile
 COPY pip.conf /root/.pip/pip.conf
 
-
+RUN conda init bash
+SHELL ["/bin/bash", "-c"]
 CMD ["/bin/bash"]
