@@ -60,7 +60,7 @@ pip install datasets
 
 </div>
 
-当开发者选定了数据集后，便可以使用 `load_dataset` 函数根据仓库`ID`加载数据集。
+当开发者选定了数据集后，便可以使用 `load_dataset` 函数根据仓库 `ID` 加载数据集。
 
 ```python title='hfl/cmrc2018'
 from datasets import load_dataset
@@ -93,7 +93,7 @@ data = load_dataset("hfl/cmrc2018")
 
 通过返回结果可以看出 `data` 的数据类型为 `DatasetDict`，它是 `Datasets` 库中重要的数据类型。
 
-!!! note "train_test_split"
+!!! Note "train_test_split"
 
 	并非所有数据集都包含训练集、验证集和测试集。有些数据集可能只有一个或两个子集。
 	对于数据集 `hfl/cmrc2018` 存在训练集、验证集和测试集。但是对于 `LooksJuicy/ruozhiba` 却只存在训练集。
@@ -180,10 +180,62 @@ Dataset({
 
 ```
 
-!!! note "配置"
+!!! Note "配置"
 
 	### 配置 (Configurations)
 
 	* 一些数据集包含多个子数据集，子数据集又可能包含训练集、测试集和验证集。例如`Minds-14`数据集，每个子数据集包含不同语言的音频数据。这些子数据集被称为配置 (configurations)。
 	* 在加载有不同配置的数据集时，需要明确选择一个配置。可以使用 `get_dataset_config_names()` 函数检索数据集的所有可用配置列表。例如，`get_dataset_config_names("PolyAI/minds14")` 返回`Minds-14`数据集的所有可用语言配置列表。
 	* 加载数据集时，指定要加载的配置，例如`load_dataset("PolyAI/minds14", "fr-FR", split="train")`加载法语训练集。
+
+## Dataset 方法介绍
+
+### `add_column` 方法
+该方法向数据集中增加一列数据。以下是该方法的参数表格。
+
+| 参数                | 数据类型                    | 默认值    | 说明      |
+| ----------------- | ----------------------- | ------ | ------- |
+| `name`            | `str`                   |        | 列名      |
+| `column`          | `list` or `numpy.array` |        | 所要添加的数据 |
+| `new_fingerprint` |                         |        |         |
+| `feature`         | `FeatureType` or `None`   | `None` | 列数据类型   |
+
+```python
+from datasets import load_dataset
+
+ds = load_dataset("rotten_tomatoes", split="validation")
+```
+
+下面是使用 `ds.to_pandas()` 方法获取的数据。
+
+| text                                                                                    | label    |
+| --------------------------------------------------------------------------------------- | -------- |
+| compassionately explores the seemingly irreconcilable contradictions of love and faith  | 1        |
+| the soundtrack alone is worth the price of admission                                    | 1        |
+| rodriguez does a splendid job of racial profiling in a balanced and complex way         | 1        |
+| beneath the film's obvious determination to shock lies genuine intelligence and insight | 1        |
+| bielinsky is a filmmaker of impressive talent                                           | 1        |
+| $\cdots$                                                                                | $\cdots$ |
+
+现在调用 `add_column` 方法向原有数据增加一列数据，在这里将列名为 `text` 列的数据添加数据集中，并命名为 `new_column`。
+
+```python
+new_column = ds["text"]
+
+ds.add_column(name="new_column", column=new_column)
+```
+
+下面是变化后的数据。
+
+| text                                                                                    | label    | new_column                                                                              |
+| --------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------- |
+| compassionately explores the seemingly irreconcilable contradictions of love and faith  | 1        | compassionately explores the seemingly irreconcilable contradictions of love and faith  |
+| the soundtrack alone is worth the price of admission                                    | 1        | the soundtrack alone is worth the price of admission                                    |
+| rodriguez does a splendid job of racial profiling in a balanced and complex way         | 1        | rodriguez does a splendid job of racial profiling in a balanced and complex way         |
+| beneath the film's obvious determination to shock lies genuine intelligence and insight | 1        | beneath the film's obvious determination to shock lies genuine intelligence and insight |
+| bielinsky is a filmmaker of impressive talent                                           | 1        | bielinsky is a filmmaker of impressive talent                                           |
+| $\cdots$                                                                                | $\cdots$ | $\cdots$                                                                                |
+
+!!! bug "注意"
+	确保添加的数据和原数据的数目一致，否则会出现错误：
+	`ValueError: Failed to concatenate on axis=1 because tables don't have the same number of rows`
