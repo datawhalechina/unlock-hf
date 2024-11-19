@@ -1,0 +1,137 @@
+{
+  "main": {
+    "id": "d8a9c21bb33e2f25",
+    "type": "split",
+    "children": [
+      {
+        "id": "da6e6310ea31405e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a00f9c294cc735a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/chapter8/bert/modeling/modeling.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "modeling"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "be9138204cd9df0a",
+    "type": "split",
+    "children": [
+      {
+        "id": "d1e806fcaddf5e8a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9944f69131eca24e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 309.5,
+    "collapsed": true
+  },
+  "right": {
+    "id": "c1fee1dbd3cfa601",
+    "type": "split",
+    "children": [
+      {
+        "id": "ab946acff5eabd23",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2b3e4c969af51de1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/chapter8/bert/modeling/modeling.md"
+              },
+              "icon": "lucide-list",
+              "title": "modeling 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 213.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "a00f9c294cc735a6",
+  "lastOpenFiles": [
+    "docs/chapter8/repositories/repositories.md",
+    "docs/chapter8/repositories_index.md",
+    "docs/chapter8/bert/tokenization/tokenization.md",
+    "docs/chapter8/bert/modeling/modeling.md",
+    "docs/chapter8/bert/configuration/configuration.md",
+    "docs/chapter1/dataset_tour/datasets.md",
+    "docs/chapter8/bert/tokenization/tokenizer.md",
+    "docs/chapter8/bert/tokenization/imgs",
+    "docs/chapter8/bert/tokenization",
+    "docs/chapter8/bert/configuration/imgs",
+    "docs/chapter8/bert/configuration/config.md",
+    "docs/chapter8/bert/configuration",
+    "docs/chapter8/bert/modeling/model.md",
+    "docs/chapter8/bert/modeling/imgs",
+    "docs/chapter8/bert/modeling",
+    "docs/chapter8/bert/tokenizer/tokenizer.md",
+    "docs/chapter8/bert/tokenizer/imgs",
+    "docs/chapter8/bert/tokenizer",
+    "data.parquet",
+    "sample_data.arrow",
+    "docs/chapter1/dataset_tour/imgs/cmrc_split.png",
+    "docs/rep_index/nav.png",
+    "docs/rep_index/map.png",
+    "docs/rep_index/images_brand_logos_hf-logo-with-white-title.png",
+    "docs/index.md",
+    "docs/chapter8/repositories/imgs/transformers.png",
+    "docs/chapter8/repositories/imgs/structure_mindmap.png",
+    "docs/chapter7/gradio/imgs/visible.png",
+    "docs/chapter7/gradio/imgs/show_progress.png",
+    "docs/chapter7/gradio/imgs/row.png",
+    "docs/chapter7/gradio/imgs/nesting.png",
+    "docs/chapter7/gradio/gradio_tour.md",
+    "docs/chapter7/gradio/gradio_layout.md",
+    "docs/chapter7/gradio_index.md",
+    "docs/chapter6/translation/translation.md",
+    "docs/chapter6/text-summary/text-summary.md",
+    "docs/chapter6/mlcoftc/multi-label-classification-of-toxic-comments.md",
+    "docs/chapter6/ddpm-unet-mnist/ddpm-unet-mnist.md",
+    "docs/chapter6/container-detr/container-detr.md",
+    "docs/chapter6/code_index.md",
+    "docs/chapter5/diffusers_index.md",
+    "docs/chapter1/features_tour/features_tour.md",
+    "docs/chapter1/custom_dataset/custom_dataset.md",
+    "docs/chapter1/arrow_tour/arrow_tour.md",
+    "docs/chapter1/datasets_index.md",
+    "docs/appendix/env_config/env.md"
+  ]
+}

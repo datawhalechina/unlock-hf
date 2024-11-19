@@ -1,0 +1,8 @@
+# .obsidian
+.idea
+site
+main.ipynb
+main.py
+__pycache__
+.DS_Store
+data

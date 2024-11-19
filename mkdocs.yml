@@ -1,0 +1,144 @@
+site_name: Unlock-HF
+site_author: moyanxinxu
+site_description: Datawhale开源教程Unlock-HF
+repo_url: https://github.com/datawhalechina/unlock-hf
+edit_uri: edit/main/docs/
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      linenums: true
+      use_pygments: true
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tilde
+  - tables
+  - toc:
+      permalink: True
+  - pymdownx.superfences
+nav:
+  - 主页: "index.md"
+  - Datasets工具:
+    - 索引: "chapter1/datasets_index.md"
+    - Arrow介绍: 'chapter1/arrow_tour/arrow_tour.md'
+    - Features介绍: 'chapter1/features_tour/features_tour.md'
+    - Datasets介绍: 'chapter1/dataset_tour/datasets.md'
+    - 自定义数据集: 'chapter1/custom_dataset/custom_dataset.md'
+  - Transformers工具:
+    - 索引: 'chapter2/transformers_index.md'
+    - Pipeline工具:
+      - Pipeline: 'chapter2/pipelines/pipelines.md'
+    - Tokenizer工具:
+      - 分词: "chapter2/tokenizer/tokenizer_tour.md"
+      - 分词器: "chapter2/tokenizer/tokenizer_detail.md"
+      - 截断与填充: "chapter2/tokenizer/truncation_and_padding.md"
+    - Model工具:
+      - 自动模型: 'chapter2/model/auto_model/auto_model.md'
+    - Trainer工具:
+      - Trainer工具介绍: 'chapter2/trainer/trainer/trainer.md'
+      - Callbacks回调函数: 'chapter2/trainer/callbacks/callbacks.md'
+      - Trainer训练自定义模型: 'chapter2/trainer/module2trainer/module2trainer.md'
+      - Trainer工具实战: 'chapter2/trainer/trainer_example/trainer_example.md'
+
+  - PEFT工具:
+    - 索引: 'chapter3/peft_index.md'
+    - PEFT: 'chapter3/peft_tour/peft_tour.md'
+    - LoRA: 'chapter3/lora_tour/lora_tour.md'
+    - AdaLoRA: 'chapter3/adalora_tour/adalora_tour.md'
+    - IA3: 'chapter3/ia3_tour/ia3_tour.md'
+    - Prefix-Tuning: 'chapter3/prefix_tuning_tour/prefix_tuning_tour.md'
+    - Prompt-Tuning: 'chapter3/prompt_tuning_tour/prompt_tuning_tour.md'
+    - P-Tuning: 'chapter3/p_tuning_tour/p_tuning_tour.md'
+  - Diffusers工具:
+    - 索引: 'chapter5/diffusers_index.md'
+    - DDPM数学原理: 'chapter5/ddpm/ddpm_math.md'
+  - 代码案例:
+    - 索引: 'chapter6/code_index.md'
+    - 多标签分类任务: "chapter6/mlcoftc/multi-label-classification-of-toxic-comments.md"
+    - 抽取式阅读理解: "chapter6/cmrc/cmrc.md"
+    - 文本摘要: "chapter6/text-summary/text-summary.md"
+    - 目标检测: "chapter6/container-detr/container-detr.md"
+    - 文本翻译: "chapter6/translation/translation.md"
+    - 一种简单的去噪方法: 'chapter6/ddpm-unet-mnist/ddpm-unet-mnist.md'
+  - Gradio工具:
+    - 索引: 'chapter7/gradio_index.md'
+    - Gradio: 'chapter7/gradio/gradio_tour.md'
+    - 自定义布局: 'chapter7/gradio/gradio_layout.md'
+  - HuggingFace 代码仓库:
+    - 索引: 'chapter8/repositories_index.md'
+    - 仓库结构: 'chapter8/repositories/repositories.md'
+    - BERT代码介绍:
+      - configuration_bert.py介绍: "chapter8/bert/configuration/configuration.md"
+      - modeling_bert.py介绍: "chapter8/bert/modeling/modeling.md"
+      - tokenization_bert.py介绍: "chapter8/bert/tokenization/tokenization.md"
+  - 附录:
+    - 索引: 'appendix/appendix_index.md'
+    - 虚拟环境配置: "appendix/env_config/env.md"
+    - 可视化工具TensorBoard: "appendix/tensorboard/TensorBoard.md"
+
+
+plugins:
+    - glightbox
+    - search
+    - git-revision-date-localized:
+        enable_creation_date: true
+    - link-marker
+    - minify:
+        minify_html: true
+        minify_js: true
+        minify_css: true
+        htmlmin_opts:
+          remove_comments: true
+        cache_safe: true
+
+theme:
+  custom_dir: overides
+  features:
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - header.autohide
+    - navigation.expand
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.prune
+    - search.suggest
+    - search.share
+    - toc.integrate
+  icon:
+    annotation: material/arrow-right-circle
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 亮色模式
