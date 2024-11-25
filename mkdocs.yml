@@ -8,8 +8,11 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
-  - admonition
   - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
   - md_in_html
   - pymdownx.arithmatex:
       generic: true
@@ -74,6 +77,7 @@ nav:
     - 目标检测: "chapter6/container-detr/container-detr.md"
     - 文本翻译: "chapter6/translation/translation.md"
     - 一种简单的去噪方法: 'chapter6/ddpm-unet-mnist/ddpm-unet-mnist.md'
+    - 文本分类: "chapter6/financial_report/financial_report.md"
   - Gradio工具:
     - 索引: 'chapter7/gradio_index.md'
     - Gradio: 'chapter7/gradio/gradio_tour.md'

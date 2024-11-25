@@ -10,12 +10,15 @@ RUN apt-get update && apt-get install -y \
     wget \
     curl \
     git \
+    unzip \
+    tmux \
     && apt-get clean
 
 COPY --from=miniconda-stage /opt/conda /opt/conda
 ENV PATH="/opt/conda/bin:${PATH}"
 WORKDIR /root
 
+RUN echo "export HF_ENDPOINT=https://hf-mirror.com" >> /root/.bashrc
 COPY condarc /root/.condarc
 COPY Dockerfile /root/dockerfile/Dockerfile
 COPY pip.conf /root/.pip/pip.conf
