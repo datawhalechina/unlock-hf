@@ -3,6 +3,8 @@ comments: true
 title: 基金年报问答意图识别
 ---
 
+![qwen2](./imgs/qwen2.png)
+
 ## 前言
 
 !!! quote "引用"
