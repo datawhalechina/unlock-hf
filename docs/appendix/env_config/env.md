@@ -15,13 +15,13 @@ title: 环境配置
 
 注意：选择下载的 Miniconda3 版本需要和电脑处理器的架构吻合。为了方便，在此下方直接提供各大操作系统推荐的下载链接。
 
-| 系统 | 下载地址 |
-| :---: | --- |
-| Windows | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe> |
-| macOS（Intel） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh> |
-| macOS（M/ARM） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh> |
-| Linux（x64） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh> |
-| Linux（ARM） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh> |
+|      系统      | 下载地址                                                                   |
+| :------------: | -------------------------------------------------------------------------- |
+|    Windows     | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe> |
+| macOS（Intel） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh>   |
+| macOS（M/ARM） | <https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh>    |
+|  Linux（x64）  | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh>    |
+|  Linux（ARM）  | <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh>   |
 
 ### 安装 Miniconda
 
@@ -222,7 +222,7 @@ auto_activate_base: false
 ![conda_activate_env](./imgs/conda_activate_env.png){ width="600" }
 
 - 安装包：`conda install package_name`或者`pip install package_name`
-- `pip`在安装包时临时更换镜像源：`pip install package_name -i https://pypi.tuna.tsinghua.edu.cn/simple`
+    - `pip`在安装包时临时更换镜像源：`pip install package_name -i https://pypi.tuna.tsinghua.edu.cn/simple`
 - 卸载包：`conda remove package_name`或者`pip uninstall package_name`
 - 显示所有安装的包：`conda list`
 - 删除指定虚拟环境：`conda remove -n env_name --all`
@@ -235,7 +235,7 @@ auto_activate_base: false
 ## 安装函数库
 
 ???+ warning
-    💯 当你想在虚拟环境安装包的时候，确认你正处在正确的虚拟环境中！！
+    :100:当你想在虚拟环境安装包的时候，确认你正处在正确的虚拟环境中！！
 
 ```bash title='pip/conda'
 pip install numpy pandas matplotlib transformers datasets peft evaluate diffusers gradio torch jupyterlab

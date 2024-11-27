@@ -25,7 +25,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 ```
 
-### 数据集的加载
+### 加载数据集
 
 ```python
 class MnistDataset:
