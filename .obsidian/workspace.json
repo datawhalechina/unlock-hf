@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/chapter8/bert/modeling/modeling.md",
+                "file": "docs/chapter6/financial_report/financial_report.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "modeling"
+              "title": "financial_report"
             }
           }
         ]
@@ -68,10 +68,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/chapter8/bert/modeling/modeling.md"
+                "file": "docs/chapter6/financial_report/financial_report.md"
               },
               "icon": "lucide-list",
-              "title": "modeling 的大纲"
+              "title": "financial_report 的大纲"
             }
           }
         ]
@@ -87,10 +87,10 @@
   },
   "active": "a00f9c294cc735a6",
   "lastOpenFiles": [
+    "docs/chapter8/bert/modeling/modeling.md",
     "docs/chapter8/repositories/repositories.md",
     "docs/chapter8/repositories_index.md",
     "docs/chapter8/bert/tokenization/tokenization.md",
-    "docs/chapter8/bert/modeling/modeling.md",
     "docs/chapter8/bert/configuration/configuration.md",
     "docs/chapter1/dataset_tour/datasets.md",
     "docs/chapter8/bert/tokenization/tokenizer.md",
