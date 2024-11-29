@@ -1,6 +1,6 @@
 ---
 comments: true
-title: 文本摘要
+title: 短文本新闻摘要
 ---
 
 ![text-summary](./imgs/text-summary.png)
