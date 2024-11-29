@@ -1,6 +1,6 @@
 ---
 comments: true
-title: “文本摘要”
+title: 短文本新闻摘要
 ---
 
 ![text-summary](./imgs/text-summary.png)
@@ -11,21 +11,18 @@ title: “文本摘要”
 
 ## 代码
 
-### 导入函数包
+### 导入函数库
 
 ```python
-import numpy as np
-import torch
 from datasets import load_dataset
 from peft import LoraConfig, TaskType, get_peft_model
 from rouge_chinese import Rouge
 from transformers import (
-AutoModelForSeq2SeqLM,
-AutoTokenizer,
-DataCollatorForSeq2Seq,
-pipeline,
-Seq2SeqTrainer,
-Seq2SeqTrainingArguments,
+    AutoModelForSeq2SeqLM,
+    T5Tokenizer,
+    DataCollatorForSeq2Seq,
+    Seq2SeqTrainer,
+    Seq2SeqTrainingArguments,
 )
 ```
 
@@ -60,10 +57,10 @@ DatasetDict({
 ```
 
 ```python
-ds["train"] = ds["train"].select(range(8000))
+ds["train"] = ds["train"].select(range(10000))
 ```
 
-- 使用 `select` 方法保留训练集前 8000 条样本。
+- 使用 `select` 方法保留训练集前 10000 条样本。
 
 ### 数据预处理
 
@@ -74,32 +71,46 @@ tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 - 加载分词器。
 
 ```python
-def data_pipe(example):
-    text_inputs = tokenizer(
-        text=["摘要生成：\n" + e for e in example["text"]],
-        max_length=64,
-        truncation=True,
-    )
+def datapipe(example):
+    prefix = '文本摘要：\n'
+    remove_columns = ['summary', 'text', 'text_with_prefix']
 
-    target_inputs = tokenizer(
-        text_target=example["summary"],
-        max_length=32,
-        truncation=True,
-    )
+    def add_prefix(text):
+        return {'text_with_prefix': prefix + text}
 
-    text_inputs["labels"] = target_inputs["input_ids"]
-    return text_inputs
+    def tokenized_input_fn(text):
+        return tokenizer(
+            text=text,
+            max_length=128,
+            truncation=True,
+            padding='max_length',
+        )
+
+    def tokenized_target_fn(text):
+        target_output = tokenizer(
+            text_target=text,
+            max_length=64,
+            truncation=True,
+            padding='max_length',
+        )
+        return {'labels': target_output['input_ids']}
+
+    example = example.map(add_prefix, input_columns='text', num_proc=8)
+    example = example.map(tokenized_input_fn, input_columns='text_with_prefix', num_proc=8)
+    example = example.map(tokenized_target_fn, input_columns='summary', remove_columns=remove_columns, num_proc=8)
+
+    return example
 ```
 
-- 对每条样本内容添加前缀字符串 `"摘要生成：\n"`。
+- 对每条样本内容添加前缀字符串 `"文本摘要：\n"`。
 - 分别对原文内容和摘要内容进行编码。
-- 返回 `input_ids`, `token_type_ids`, `attention_mask`, `labels`。
+- 返回 `input_ids`, `token_type_ids`, `attention_mask`, `labels`（`target_text`的`input_ids`）。
 
 ```python
 tokenized_ds = ds.map(data_pipe, batched=True)
 ```
 
-### 模型
+### 加载模型
 
 ```python
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
@@ -118,14 +129,40 @@ model = get_peft_model(model, peft_config)
 ```
 
 ```python title="peft_config"
-LoraConfig(peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, base_model_name_or_path=None, revision=None, task_type=None, inference_mode=False, r=8, target_modules=None, lora_alpha=32, lora_dropout=0.1, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', loftq_config={}, use_dora=False, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False))
+LoraConfig(
+    peft_type=PeftType.LORA,
+    auto_mapping=None,
+    base_model_name_or_path=None,
+    revision=None,
+    task_type=None,
+    inference_mode=False,
+    r=8,
+    target_modules=None,
+    lora_alpha=32,
+    lora_dropout=0.1,
+    fan_in_fan_out=False,
+    bias='none',
+    use_rslora=False,
+    modules_to_save=None,
+    init_lora_weights=True,
+    layers_to_transform=None,
+    layers_pattern=None,
+    rank_pattern={},
+    alpha_pattern={},
+    megatron_config=None,
+    megatron_core='megatron.core',
+    loftq_config={},
+    use_dora=False,
+    layer_replication=None,
+    runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False)
+)
 ```
 
 ```python title="model.print_trainable_parameters()"
 trainable params: 884,736 || all params: 248,462,592 || trainable%: 0.3561
 ```
 
-### 性能指标
+### 定义性能指标
 
 ```python
 rouge = Rouge()
@@ -145,23 +182,24 @@ def compute_metrics(evalPred):
     }
 ```
 
-### 训练参数
+### 定义训练参数
 
 ```python
 training_args = Seq2SeqTrainingArguments(
     output_dir="./mengzi_lcsts",
     num_train_epochs=5,
     learning_rate=1e-3,
-    per_device_train_batch_size=32,
-    per_device_eval_batch_size=32,
+    per_device_train_batch_size=128,
+    per_device_eval_batch_size=128,
+    logging_strategy='steps',
     eval_strategy="epoch",
-    save_total_limit=3,
+    save_total_limit=2,
     metric_for_best_model="rouge-l",
     predict_with_generate=True,
 )
 ```
 
-### Trainer
+### 定义训练器
 
 ```python
 trainer = Seq2SeqTrainer(
@@ -170,7 +208,7 @@ trainer = Seq2SeqTrainer(
     train_dataset=tokenized_ds["train"],
     eval_dataset=tokenized_ds["validation"],
     tokenizer=tokenizer,
-    compute_metrics=compute_metrics,
+    # compute_metrics=compute_metrics,
     args=training_args,
 )
 ```
@@ -184,8 +222,20 @@ trainer.train()
 ### 推理
 
 ```python
-pipe = pipeline("summarization", model="./mengzi_lcsts", tokenizer="./mengzi_lcsts")
-out = pipe("xxxxxxxxxx")
+from transformers import AutoModelForSeq2SeqLM, T5Tokenizer
 
-print(out)
+model = AutoPeftModelForCausalLM.from_pretrained("./mengzi_lcsts")
+tokenizer = T5Tokenizer.from_pretrained("./mengzi_lcsts")
+
+input = ("雅虎发布2014年第四季度财报，并推出了免税方式剥离其持有的阿里巴巴集团15％股权的计划，"
+         "打算将这一价值约400亿美元的宝贵投资分配给股东。截止发稿前，雅虎股价上涨了大约7％，至51.45美元。")
+
+def get_summary(input):
+    inputs = tokenizer(input, return_tensors='pt', max_length=512, truncation=True)
+    outputs = model.generate(**inputs, max_length=100, num_beams=4, length_penalty=2.0, early_stopping=True)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+```
+
+```plain-text title="get_summary(input)"
+雅虎宣布将出售阿里巴巴15%股权
 ```
