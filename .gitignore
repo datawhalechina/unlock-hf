@@ -6,3 +6,5 @@ main.py
 __pycache__
 .DS_Store
 data
+model
+dataset

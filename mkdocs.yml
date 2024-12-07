@@ -71,13 +71,14 @@ nav:
     - DDPM数学原理: 'chapter5/ddpm/ddpm_math.md'
   - 代码案例:
     - 索引: 'chapter6/code_index.md'
-    - 多标签分类任务: "chapter6/mlcoftc/multi-label-classification-of-toxic-comments.md"
+    - 多标签分类: "chapter6/mlcoftc/multi-label-classification-of-toxic-comments.md"
     - 抽取式阅读理解: "chapter6/cmrc/cmrc.md"
     - 文本摘要: "chapter6/text-summary/text-summary.md"
     - 目标检测: "chapter6/container-detr/container-detr.md"
     - 文本翻译: "chapter6/translation/translation.md"
     - 一种简单的去噪方法: 'chapter6/ddpm-unet-mnist/ddpm-unet-mnist.md'
     - 文本分类: "chapter6/financial_report/financial_report.md"
+    - 图像分类: "chapter6/image_classification/image_classification.md"
   - Gradio工具:
     - 索引: 'chapter7/gradio_index.md'
     - Gradio: 'chapter7/gradio/gradio_tour.md'
