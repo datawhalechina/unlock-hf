@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     inetutils-ping \
     tmux \
+    watch \
     && apt-get clean
 
 COPY --from=miniconda-stage /opt/conda /opt/conda
