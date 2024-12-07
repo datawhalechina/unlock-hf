@@ -43,12 +43,6 @@
 | 姓名   | 职责                   | 简介               |
 | :----- | :--------------------- | :----------------- |
 | 田健翔 | 项目负责人             | 内容创作者 |
-| 于小敏 | 项目指导人             | DataWhale正式成员  |
-| 卢鑫斌 | 第1章(Datasets)贡献者  | 内容创作者         |
-| 胥佳程 | 第3章(PEFT)贡献者      | 内容创作者         |
-| 秦子涵 | 第5章(Diffusers)贡献者 | 内容创作者         |
-| 陈凯歌 | 第7章(Gradio)贡献者    | 内容创作者         |
-| 刘硕   | 第7章(Gradio)贡献者    | 内容创作者         |
 
 - PEFT
     - LoRa：@[鑫民](https://github.com/fancyboi999)
@@ -57,6 +51,8 @@
     - Prefix-Tuning：@[鑫民](https://github.com/fancyboi999)
     - prompt-Tuning：@[鑫民](https://github.com/fancyboi999)
     - P-Tuning：@[鑫民](https://github.com/fancyboi999)
+- 代码案例
+    - 图像分类: @[陈相斌](https://github.com/chenxinxi)
 
 项目保姆(o^^o)：高增玉
 
