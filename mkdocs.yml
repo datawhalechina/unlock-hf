@@ -77,7 +77,8 @@ nav:
     - 目标检测: "chapter6/container-detr/container-detr.md"
     - 文本翻译: "chapter6/translation/translation.md"
     - 一种简单的去噪方法: 'chapter6/ddpm-unet-mnist/ddpm-unet-mnist.md'
-    - 文本分类: "chapter6/financial_report/financial_report.md"
+    - 文本分类(判别式): "chapter6/financial_report/financial_report.md"
+    - 文本分类(生成式/指令微调): "chapter6/text_classification/text_classification.md"
     - 图像分类: "chapter6/image_classification/image_classification.md"
   - Gradio工具:
     - 索引: 'chapter7/gradio_index.md'
